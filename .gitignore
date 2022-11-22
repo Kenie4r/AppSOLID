@@ -17,5 +17,3 @@ target/**
 .idea/encodings.xml
 
 .idea/runConfigurations.xml
-
-src/**
