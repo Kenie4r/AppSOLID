@@ -1,7 +1,8 @@
 import org.kodigo.Class.ConsoleScanner;
+import org.kodigo.Class.Servicio;
 
 public class main {
     public static void main(String[] args) {
-        System.out.println(ConsoleScanner.getDouble());
+        Servicio servicio = new Servicio();
     }
 }
