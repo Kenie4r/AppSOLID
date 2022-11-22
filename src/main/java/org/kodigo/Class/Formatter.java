@@ -18,6 +18,25 @@ public class Formatter implements   interface_formatter{
 
         return formatDate;
     }
+    
+    @Override
+    public Date formatDateToFactures(String format) {
+
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+        Date dat = null;
+        try{
+
+            dat=formato.parse(format);
+
+        }catch(ParseException ex){
+
+            System.out.println("Hubo un problema: "+ex);
+
+        }
+
+        return dat;
+    }
+
 
     @Override
     public String Hour() {
