@@ -2,10 +2,8 @@ package org.kodigo.Class;
 
 import lombok.Getter;
 import lombok.Setter;
-
-import java.time.LocalDate;
-import java.time.Period;
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 public class Servicio {
 
@@ -30,17 +28,35 @@ public class Servicio {
         this.fechaSuscripcion = new Date(System.currentTimeMillis()) ;
     }
 
-    public int duracionDeServicio(){
-        return this.fechaSuscripcion.compareTo(new Date(System.currentTimeMillis()));
-    }
-
     public Servicio(String nombre, String proveedor, Double tarifa, Date fechaSuscripcion) {
         this.nombre = nombre;
         this.proveedor = proveedor;
         this.tarifa = tarifa;
         this.fechaSuscripcion = fechaSuscripcion;
+        System.out.println(this.fechaSuscripcion);
     }
 
+    public int diasDeServicioActivo(){
+        return (int) TimeUnit.DAYS.convert(diferencialdeTiempo(),TimeUnit.MILLISECONDS);
+    }
 
+    public int mesesDeServicioActivo(){
+        return diasDeServicioActivo()/30;
+    }
+
+    public int añosDeServicioActivo(){
+        return diasDeServicioActivo()/365;
+    }
+
+    public String tiempoTranscurrido(){
+        int años = diasDeServicioActivo()/365;
+        int meses = (diasDeServicioActivo()%365)/30;
+        int diasRestantes= ((diasDeServicioActivo()%365)%30);
+        return años+" años, "+meses+" meses, "+diasRestantes+" dias";
+    }
+
+    private long diferencialdeTiempo(){
+        return Math.abs(System.currentTimeMillis()-this.fechaSuscripcion.getTime());
+    }
 
 }
