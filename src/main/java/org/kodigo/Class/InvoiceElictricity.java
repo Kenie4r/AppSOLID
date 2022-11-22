@@ -4,8 +4,7 @@ package org.kodigo.Class;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
-@AllArgsConstructor
-@NoArgsConstructor
+
 public class InvoiceElictricity extends Invoice {
 
 
