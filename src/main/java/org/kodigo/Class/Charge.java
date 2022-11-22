@@ -22,17 +22,18 @@ public class Charge {
         System.out.println("+------------------------------------------+");
         System.out.println("|         NUEVO CARGO DE SERVICIO          |");
         System.out.println("+------------------------------------------+");
-        System.out.println("Ingrese el nombre del cargo: ");
+        System.out.print("Ingrese el nombre del cargo: ");
         String name = scanner.nextLine();
         double price = 0;
         do {
 
             try{
-                System.out.println("Ingrese el costo del cargo: ");
+                System.out.print("Ingrese el costo del cargo: ");
                 String  priceS = scanner.nextLine();
                 price = Double.parseDouble(priceS);
                 if(price>0)
                     break;
+
                 System.out.println("El dato ingresado es menor a 0");
             }catch (NumberFormatException ex){
                 System.out.println("El dato ingresado no es un número");

@@ -10,7 +10,7 @@ import java.util.Date;
 import java.util.List;
 
 
-@AllArgsConstructor
+@AllArgsConstructor @NoArgsConstructor
 public abstract class Invoice<E> {
 
 
@@ -27,9 +27,25 @@ public abstract class Invoice<E> {
     @Getter
     private List<Charge> charges;
 
-    public Invoice() {
+    public Invoice(E service) {
         //incializamos la lista para que no sea null
         this.charges = new ArrayList<>();
+        this.service = service;
+        System.out.println("+------------------------------------------+");
+        System.out.println("|        NUEVA FACTURA DE SERVICIO         |");
+        System.out.println("+------------------------------------------+");
+        System.out.println("El servicio es :  " + this.service);
+        System.out.println("# de cargos de la factura " );
+        int chargeNumber = ConsoleScanner.getInteger();
+        for(int index = 0 ; index<chargeNumber; index++){
+           setNewChargeInInvoice(new Charge());
+        }
+
+        System.out.println("");
+
+
+
+
     }
 
     private void updateTotal(){
@@ -53,4 +69,21 @@ public abstract class Invoice<E> {
         }
     }
 
+    @Override
+    public String toString() {
+        String text = "+------------------------------------------+\n";
+        text += "|           FACTURA DE SERVICIO            |\n";
+        text +="+ - - - - - - - - - - -- - - - - - - - - - +\n";
+        text+="El servicio es :  " + this.service+"\n";
+        text +="Esta factura tiene " + this.charges.size() + " cargos \n";
+        text+= "Los cargos son los siguientes:\n";
+        for (Charge cargo:
+             this.charges) {
+            text+="* " + cargo.getName() + " : $" + cargo.getPrice() +"\n";
+        }
+        text +="TOTAL: $" + this.total + "\n";
+        text+="+------------------------------------------+";
+
+       return text;
+    }
 }
