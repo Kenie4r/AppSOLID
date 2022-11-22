@@ -14,3 +14,8 @@
 .idea/uiDesigner.xml
 target/**
 .idea/compiler.xml
+.idea/encodings.xml
+
+.idea/runConfigurations.xml
+
+src/**
