@@ -8,7 +8,7 @@ public class ConsoleScanner {
     public static Double getDouble(){
         double value = scan.nextDouble();
         scan.nextLine();
-        return scan.nextDouble();
+        return value;
     }
 
     public static String getString(){
