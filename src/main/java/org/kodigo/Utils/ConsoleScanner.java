@@ -6,8 +6,16 @@ public class ConsoleScanner {
     private static Scanner scan = new Scanner(System.in);
 
     public static Double getDouble(){
-        double value = scan.nextDouble();
-        scan.nextLine();
+        double value = 0;
+        while(true){
+            try{
+                String str =scan.nextLine();
+                value = Double.parseDouble(str);
+                break;
+            }catch (NumberFormatException ex){
+                System.out.println("El dato ingresado no es un número");
+            }
+        }
         return value;
     }
 
@@ -17,8 +25,16 @@ public class ConsoleScanner {
     }
 
     public static Integer getInteger(){
-        int value = scan.nextInt();
-        scan.nextLine();
+        int value = 0;
+        while(true){
+            try{
+                String str =scan.nextLine();
+                value = Integer.parseInt(str);
+                break;
+            }catch (NumberFormatException ex){
+                System.out.println("El dato ingresado no es un número");
+            }
+        }
         return value;
     }
 
