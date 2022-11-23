@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.kodigo.Utils.ConsoleScanner;
 
 import java.util.Scanner;
 
@@ -17,29 +18,29 @@ public class Charge {
     private double price;
 
 
-    Scanner scanner = new Scanner(System.in);
+    //With this constructor we initialized a general charge
     public Charge() {
+        //First open a little form on the console
         System.out.println("+------------------------------------------+");
         System.out.println("|         NUEVO CARGO DE SERVICIO          |");
         System.out.println("+------------------------------------------+");
         System.out.print("Ingrese el nombre del cargo: ");
-        String name = scanner.nextLine();
+        //We get the name of the charge with the ConsoleScanner class
+        String name = ConsoleScanner.getString();
+        //We initialize a price varible to in order to make it more readable
         double price = 0;
+        //We get the price of the cost of this charge
         do {
-
-            try{
                 System.out.print("Ingrese el costo del cargo: ");
-                String  priceS = scanner.nextLine();
-                price = Double.parseDouble(priceS);
+                //Get a double value with the consoleScanner
+                price = ConsoleScanner.getDouble();
+                //Check if the value is grater than 0
                 if(price>0)
                     break;
-
+                //If not repeat until get a value grater than 0
                 System.out.println("El dato ingresado es menor a 0");
-            }catch (NumberFormatException ex){
-                System.out.println("El dato ingresado no es un número");
-            }
-
         }while (true);
+        //Update the data of this charge
         this.name = name;
         this.price = price;
     }

@@ -28,48 +28,59 @@ public abstract class Invoice{
     @Getter
     private List<Charge> charges;
 
+    //With this constructor we can create a new invoice of a service
     public Invoice(Servicio service) {
-        //incializamos la lista para que no sea null
+        //Initialized the arrayList of the charges, in order to no get a null list
         this.charges = new ArrayList<>();
+        //get the service that we created when we call this function
         this.service = service;
+        //print a little form to get all the data
         System.out.println("+------------------------------------------+");
         System.out.println("|        NUEVA FACTURA DE SERVICIO         |");
         System.out.println("+------------------------------------------+");
+        //print the name of the services to show more information to the client
         System.out.println("El servicio es :  " + this.service);
+        //get the count of charges that the invoice will have
         System.out.println("# de cargos de la factura " );
+        //get the number with the ConsoleScanner class
         int chargeNumber = ConsoleScanner.getInteger();
+        //a for that will help us to create and add all the charges in the invoice
         for(int index = 0 ; index<chargeNumber; index++){
            setNewChargeInInvoice(new Charge());
         }
 
-        System.out.println("");
-
-
-
-
     }
-
+    //A function that will update the total of the invoice,
     protected void updateTotal(){
-        double subtotal = 0.0;
 
+        double subtotal = 0.0;
+        //We will check all the charges in order to get their subtotal or price
         for(Charge charge : this.charges){
-            subtotal += charge.getPrice();
+            //then just add the price to the subtotal
+            subtotal += charge.getPrice();//just get the price
         }
-        this.total = subtotal;
+        this.total = subtotal;//just update the total of the invoice
     }
 
+    //insert a new charge in the list, just send the charge to add it
     public boolean setNewChargeInInvoice(Charge charge){
         //Trying to add the charge on the invoice
         try{
             this.charges.add(charge);
-            //the we have to update de total of the invoice
+            //then we have to update de total of the invoice
             this.updateTotal();
+            //if we haven't found any problem just return true
             return true;
         }catch (Exception e){
+            //If we have found a problem return false
             return false;
         }
     }
 
+
+
+    //Override the function to string to get all the information of the invoice
+    //We can get all the information to print it on the console
     @Override
     public String toString() {
         String text = "+------------------------------------------+\n";
