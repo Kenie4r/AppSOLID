@@ -2,6 +2,7 @@ package org.kodigo.Class;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.kodigo.Utils.ConsoleScanner;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 

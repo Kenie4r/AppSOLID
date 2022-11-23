@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.kodigo.Utils.ConsoleScanner;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -11,7 +12,7 @@ import java.util.List;
 
 
 @AllArgsConstructor @NoArgsConstructor
-public abstract class Invoice<E> {
+public abstract class Invoice{
 
 
     @Setter
@@ -22,12 +23,12 @@ public abstract class Invoice<E> {
     private double total;
     @Setter
     @Getter
-    private E service;
+    private Servicio service;
     @Setter
     @Getter
     private List<Charge> charges;
 
-    public Invoice(E service) {
+    public Invoice(Servicio service) {
         //incializamos la lista para que no sea null
         this.charges = new ArrayList<>();
         this.service = service;
@@ -48,7 +49,7 @@ public abstract class Invoice<E> {
 
     }
 
-    private void updateTotal(){
+    protected void updateTotal(){
         double subtotal = 0.0;
 
         for(Charge charge : this.charges){
@@ -74,7 +75,7 @@ public abstract class Invoice<E> {
         String text = "+------------------------------------------+\n";
         text += "|           FACTURA DE SERVICIO            |\n";
         text +="+ - - - - - - - - - - -- - - - - - - - - - +\n";
-        text+="El servicio es :  " + this.service+"\n";
+        text+="El servicio es :  " + this.service.getNombre()+"\n";
         text +="Esta factura tiene " + this.charges.size() + " cargos \n";
         text+= "Los cargos son los siguientes:\n";
         for (Charge cargo:

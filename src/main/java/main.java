@@ -1,4 +1,5 @@
-import org.kodigo.Class.ConsoleScanner;
+import org.kodigo.Class.Invoice;
+import org.kodigo.Class.InvoiceElictricity;
 import org.kodigo.Class.Servicio;
 
 import java.util.Calendar;

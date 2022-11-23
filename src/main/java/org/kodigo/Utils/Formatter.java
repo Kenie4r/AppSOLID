@@ -1,4 +1,4 @@
-package org.kodigo.Class;
+package org.kodigo.Utils;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -7,7 +7,7 @@ import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Formatter implements   interface_formatter{
+public class Formatter implements interface_formatter {
 
 
     Date date = new Date();

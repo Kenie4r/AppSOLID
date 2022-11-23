@@ -1,13 +1,9 @@
 package org.kodigo.Class;
 
-
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-
-
-public class InvoiceElictricity extends Invoice {
-    private static final double IMPUESTO = 0.13;
-    public InvoiceElictricity(Servicio service) {
+public class InvoiceWater extends Invoice
+{
+    private static final double IMPUESTO = 0.10;
+    public InvoiceWater(Servicio service) {
         super(service);
     }
     @Override
@@ -20,5 +16,4 @@ public class InvoiceElictricity extends Invoice {
         this.setTotal( subtotal);
 
     }
-
 }
