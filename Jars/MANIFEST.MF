@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Archiver-Version: Plexus Archiver
+Created-By: Apache Maven 3.8.1
+Built-By: molina
+Build-Jdk: 19
+Class-Path: json-simple-1.1.1.jar junit-4.10.jar hamcrest-core-1.1.jar
+Specification-Title: AppSOLID
+Specification-Version: 1.0-SNAPSHOT
+Implementation-Title: AppSOLID
+Implementation-Version: 1.0-SNAPSHOT
+Implementation-Vendor-Id: org.kodigo.solid
+Main-Class: org.projectlombok.main
+key: value
+mode: development
+url: 
+
