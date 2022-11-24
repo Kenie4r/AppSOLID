@@ -40,7 +40,7 @@ public class Casa {
     private List<Servicio> listadoServicios;
     @Getter
     private Double costoMantenimiento;
-    private List<Factura> listadoFacturas;
+    private List<Invoice> listadoFacturas;
 
 
     public Casa(){
