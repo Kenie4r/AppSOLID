@@ -43,7 +43,7 @@
                             <addClasspath>true</addClasspath>
                             <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
                             <addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
-                            <mainClass>org.projectlombok.main</mainClass>
+                            <mainClass>org.kodigo.main</mainClass>
                         </manifest>
                         <manifestEntries>
                             <mode>development</mode>
