@@ -42,4 +42,10 @@ public class ConsoleScanner {
     public static void closeScanner(){
         scan.close();
     }
+
+    public static String getSingleString(){
+        String value = scan.next();
+        scan.nextLine();
+        return value;
+    }
 }
