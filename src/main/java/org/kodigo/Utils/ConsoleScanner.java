@@ -23,6 +23,7 @@ public class ConsoleScanner {
         String value = scan.nextLine();
         return value;
     }
+    //Validacion para evitar String Vacios
 
     public static Integer getInteger(){
         int value = 0;

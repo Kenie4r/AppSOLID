@@ -7,6 +7,17 @@ import org.kodigo.Utils.ConsoleScanner;
 import java.util.ArrayList;
 import java.util.List;
 
+
+/*Casa es una Clase de Datos, que se encarga de Almacenar los Datos de una Casa o vivienda.
+Dentro de la casa Habitan personas que hacen uso de servicios, la aplicacion guarda la informacion
+Para luego utilizarla para enviar notificaciones por correo y enviar reportes.
+* */
+
+/*
+* Agrega Personas, Servicios y Facturas a la Casa.
+*
+* */
+
 public class Casa {
     @Getter
     @Setter
@@ -25,7 +36,6 @@ public class Casa {
     @Getter
     @Setter
     private Person propietario;
-    private int cuentaPersona = 0;
     private List<Person> listadoPersonas;
     private List<Servicio> listadoServicios;
     @Getter
@@ -48,7 +58,7 @@ public class Casa {
         System.out.println("Ingrese el numero de la Casa:");
         this.numeroCasa = ConsoleScanner.getInteger();
         System.out.println("Por favor Ingrese el Propietario de la Casa:");
-        propietario = new Person();
+        propietario = new Person("0", ConsoleScanner.getString(),"admin@admin.com");
         listadoPersonas = new ArrayList<>();
         listadoServicios = new ArrayList<>();
         listadoFacturas = new ArrayList<>();
@@ -90,13 +100,21 @@ public class Casa {
         int index = 0;
         System.out.println("No. -  Servicio      - Proveedor");
         for (Servicio servicio : listadoServicios) {
-            System.out.println(index + "   -   "+servicio.getNombre());
+            System.out.println(index + "   -   "+servicio.getNombre()+"   -   "+servicio.getProveedor());
             index++;
         }
     }
 
     public void actualizarCostoMantenimiento(Double nuevoCosto){
         this.costoMantenimiento = nuevoCosto;
+    }
+
+    public void eliminarPersona(int index){
+        this.listadoPersonas.remove(index);
+    }
+
+    public void eliminarServicio(int index){
+        this.listadoServicios.remove(index);
     }
 
 
