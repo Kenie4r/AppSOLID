@@ -4,9 +4,8 @@ import org.kodigo.Class.Casa;
 import org.kodigo.Utils.ConsoleScanner;
 
 import java.util.List;
-import java.util.Scanner;
 
-public class Menu {
+public class MenuPrincipal {
 
     private static List<Casa> listadoCasas;
 
@@ -14,7 +13,7 @@ public class Menu {
         String opciones;
 
         do {
-            System.out.println("Menu principal");
+            System.out.println("MenuPrincipal principal");
             System.out.println("Seleccione una opcion");
             System.out.println();
             System.out.println("a - Agregar casa");

@@ -5,7 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 /*
-Persona va a pedir sus propios Datos? o se piden por el Menu.
+Persona va a pedir sus propios Datos? o se piden por el MenuPrincipal.
 * */
 @NoArgsConstructor @AllArgsConstructor
 public class Person {
