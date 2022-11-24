@@ -7,6 +7,12 @@ import org.kodigo.Utils.ConsoleScanner;
 import java.util.ArrayList;
 import java.util.List;
 
+
+/*Casa es una Clase de Datos, que se encarga de Almacenar los Datos de una Casa o vivienda.
+Dentro de la casa Habitan personas que hacen uso de servicios, la aplicacion guarda la informacion
+Para luego utilizarla para enviar notificaciones por correo y enviar reportes.
+* */
+
 public class Casa {
     @Getter
     @Setter
@@ -25,7 +31,6 @@ public class Casa {
     @Getter
     @Setter
     private Person propietario;
-    private int cuentaPersona = 0;
     private List<Person> listadoPersonas;
     private List<Servicio> listadoServicios;
     @Getter
