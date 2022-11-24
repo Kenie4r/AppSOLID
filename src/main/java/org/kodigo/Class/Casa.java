@@ -100,7 +100,7 @@ public class Casa {
         int index = 0;
         System.out.println("No. -  Servicio      - Proveedor");
         for (Servicio servicio : listadoServicios) {
-            System.out.println(index + "   -   "+servicio.getNombre());
+            System.out.println(index + "   -   "+servicio.getNombre()+"   -   "+servicio.getProveedor());
             index++;
         }
     }
@@ -111,6 +111,10 @@ public class Casa {
 
     public void eliminarPersona(int index){
         this.listadoPersonas.remove(index);
+    }
+
+    public void eliminarServicio(int index){
+        this.listadoServicios.remove(index);
     }
 
 

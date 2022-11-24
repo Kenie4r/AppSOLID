@@ -21,7 +21,7 @@ public class Servicio {
     private Date fechaSuscripcion;
 
     public Servicio(){
-        System.out.println("Recibiendo informacion de servicio:");
+        System.out.println("\nRecibiendo informacion de servicio:");
         System.out.println("Ingrese el nombre del Servicio:");
         this.nombre = ConsoleScanner.getString();
         System.out.println("Ingrese quien es el proveedor del servicio:");
@@ -59,5 +59,7 @@ public class Servicio {
     private long diferencialdeTiempo(){
         return Math.abs(System.currentTimeMillis()-this.fechaSuscripcion.getTime());
     }
+
+
 
 }
