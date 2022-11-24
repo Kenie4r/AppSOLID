@@ -1,4 +1,4 @@
-package org.kodigo.Utils;
+package org.kodigo.Interfaces;
 
 import java.util.Date;
 

@@ -1,5 +1,7 @@
 package org.kodigo.Utils;
 
+import org.kodigo.Interfaces.interface_formatter;
+
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

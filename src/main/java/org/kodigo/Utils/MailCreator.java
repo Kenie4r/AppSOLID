@@ -1,11 +1,10 @@
 package org.kodigo.Utils;
 
 import org.kodigo.Class.Invoice;
+import org.kodigo.Interfaces.MailCreatorInterface;
 
 
-
-
-public class MailCreator implements MailCreatorInterface{
+public class MailCreator implements MailCreatorInterface {
 
 
 //    A JAVA class that have the job to make a HTML body in order to have the classes more comfortable to edit in a future
