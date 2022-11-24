@@ -1,5 +1,6 @@
-package org.kodigo.Class;
+package org.kodigo.Menus;
 
+import org.kodigo.Class.Casa;
 import org.kodigo.Utils.ConsoleScanner;
 
 import java.util.List;
