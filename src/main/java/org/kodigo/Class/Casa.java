@@ -13,6 +13,11 @@ Dentro de la casa Habitan personas que hacen uso de servicios, la aplicacion gua
 Para luego utilizarla para enviar notificaciones por correo y enviar reportes.
 * */
 
+/*
+* Agrega Personas, Servicios y Facturas a la Casa.
+*
+* */
+
 public class Casa {
     @Getter
     @Setter
@@ -53,7 +58,7 @@ public class Casa {
         System.out.println("Ingrese el numero de la Casa:");
         this.numeroCasa = ConsoleScanner.getInteger();
         System.out.println("Por favor Ingrese el Propietario de la Casa:");
-        propietario = new Person();
+        propietario = new Person("0", ConsoleScanner.getString(),"admin@admin.com");
         listadoPersonas = new ArrayList<>();
         listadoServicios = new ArrayList<>();
         listadoFacturas = new ArrayList<>();
@@ -102,6 +107,10 @@ public class Casa {
 
     public void actualizarCostoMantenimiento(Double nuevoCosto){
         this.costoMantenimiento = nuevoCosto;
+    }
+
+    public void eliminarPersona(int index){
+        this.listadoPersonas.remove(index);
     }
 
 
