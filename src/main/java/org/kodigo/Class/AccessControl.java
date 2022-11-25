@@ -28,7 +28,7 @@ public class AccessControl implements ILoginInterface {
         String contraseña="";
         System.out.println("Ingrese el Usuario:");
         usuario = ConsoleScanner.getSingleString();
-        System.out.println("Ingrese el Usuario:");
+        System.out.println("Ingrese la Contraseña:");
         contraseña = ConsoleScanner.getSingleString();
         return verifyLoggin(new User(usuario,contraseña));
     }

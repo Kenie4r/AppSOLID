@@ -1,11 +1,12 @@
 package org.kodigo.Menus;
 
 import org.kodigo.Class.Casa;
+import org.kodigo.Interfaces.IMenu;
 import org.kodigo.Utils.ConsoleScanner;
 
 import java.util.List;
 
-public class MenuPrincipal {
+public class MenuPrincipal implements IMenu {
 
     private static List<Casa> listadoCasas;
 
@@ -56,5 +57,10 @@ public class MenuPrincipal {
             System.out.println(i + " - " + casa.getCodigoCasa() + " - " + casa.getPropietario());
             i++;
         }
+    }
+
+    @Override
+    public void lanzarMenu() {
+        MenuMain();
     }
 }
