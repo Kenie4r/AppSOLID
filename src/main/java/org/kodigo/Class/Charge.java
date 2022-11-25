@@ -47,6 +47,7 @@ public class Charge {
 
     @Override
     public String toString(){
-        return "El cargo es : " + this.name + " con un coste de $" + this.price;
+
+        return "+" + this.name + "                $" + this.price ;
     }
 }
