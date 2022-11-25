@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.kodigo.Interfaces.InvoiceInterface;
 import org.kodigo.Utils.ConsoleScanner;
 
 import java.util.ArrayList;
@@ -12,7 +13,7 @@ import java.util.List;
 
 
 @AllArgsConstructor @NoArgsConstructor
-public abstract class Invoice{
+public  class Invoice implements InvoiceInterface {
 
 
     @Setter
@@ -91,7 +92,7 @@ public abstract class Invoice{
         text+= "Los cargos son los siguientes:\n";
         for (Charge cargo:
              this.charges) {
-            text+="* " + cargo.getName() + " : $" + cargo.getPrice() +"\n";
+            text+=cargo.toString() + "\n";
         }
         text +="TOTAL: $" + this.total + "\n";
         text+="+------------------------------------------+";
