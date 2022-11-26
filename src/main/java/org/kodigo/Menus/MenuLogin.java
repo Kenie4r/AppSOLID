@@ -10,8 +10,9 @@ public class MenuLogin implements IMenu{
     ILoginInterface accessControl;
     IMenu siguienteMenu;
 
-    public MenuLogin(ILoginInterface accessControl) {
+    public MenuLogin(ILoginInterface accessControl, IMenu siguienteMenu) {
         this.accessControl = accessControl;
+        this.siguienteMenu = siguienteMenu;
     }
 
     private void mostrarLogin(){
