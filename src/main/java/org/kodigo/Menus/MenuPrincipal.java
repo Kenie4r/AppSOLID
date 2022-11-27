@@ -10,7 +10,7 @@ public class MenuPrincipal implements IMenu {
 
     private static List<Casa> listadoCasas;
 
-    public static void MenuMain(){
+    private static void MenuMain(){
         String opciones;
 
         do {
@@ -42,13 +42,13 @@ public class MenuPrincipal implements IMenu {
         }while (opciones.length() != 4);
     }
 
-       public static boolean addCasa(Casa casa){
+       private static boolean addCasa(Casa casa){
         listadoCasas.add(casa);
         return true;
 
     }
 
-    public void listarCasas(){
+    private void listarCasas(){
         System.out.println("Lista de casas");
         int i = 0;
 
@@ -62,5 +62,9 @@ public class MenuPrincipal implements IMenu {
     @Override
     public void lanzarMenu() {
         MenuMain();
+    }
+
+    private void imprimirOpciones(){
+
     }
 }
