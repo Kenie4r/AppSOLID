@@ -3,6 +3,8 @@ package org.kodigo.Class;
 import lombok.Getter;
 import lombok.Setter;
 import org.kodigo.Utils.ConsoleScanner;
+import org.kodigo.Utils.PauseScreen;
+import org.kodigo.Utils.ScreenCleaner;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,6 +46,7 @@ public class Casa {
 
 
     public Casa(){
+        ScreenCleaner.cleanScreen();
         System.out.println("***************************");
         System.out.println("Ingresando Datos para Casa:");
         System.out.println("***************************\n");
@@ -58,7 +61,7 @@ public class Casa {
         System.out.println("Ingrese el numero de la Casa:");
         this.numeroCasa = ConsoleScanner.getInteger();
         System.out.println("Por favor Ingrese el Propietario de la Casa:");
-        propietario = new Person("0", ConsoleScanner.getString(),"admin@admin.com");
+        propietario = new Person("admin", ConsoleScanner.getString(),"admin@admin.com");
         listadoPersonas = new ArrayList<>();
         listadoServicios = new ArrayList<>();
         listadoFacturas = new ArrayList<>();
@@ -75,6 +78,8 @@ public class Casa {
 
     public boolean addPersona(Person persona){
         System.out.println(persona.getPersonName()+" Es parte de la casa.\n");
+        System.out.println("ListadoPersonas size: "+ listadoPersonas.size());
+        PauseScreen.pause(1);
         listadoPersonas.add(persona);
         return true;
     }
