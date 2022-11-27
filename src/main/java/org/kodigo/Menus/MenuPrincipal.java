@@ -86,7 +86,11 @@ public class MenuPrincipal implements IMenu {
             int index = parsearAIndex(opcion);
             if(esCasaValida(index)){
                 lanzarMenuCasas(index);
+            }else{
+                lanzarMenu();
             }
+        }else{
+            lanzarMenu();
         }
     }
 
@@ -96,7 +100,7 @@ public class MenuPrincipal implements IMenu {
     }
 
     private boolean esCasaValida(int indexCasa){
-        return indexCasa <= listadoCasas.size();
+        return indexCasa < listadoCasas.size() && listadoCasas.size() >0;
     }
 
     private int parsearAIndex(String index){
