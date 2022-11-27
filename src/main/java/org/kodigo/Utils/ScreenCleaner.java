@@ -8,9 +8,7 @@ public class ScreenCleaner {
         try {
             processBuilder.inheritIO().start().waitFor();
         } catch (InterruptedException e) {
-            throw new RuntimeException(e);
         } catch (IOException e) {
-            throw new RuntimeException(e);
         }
     }
 }

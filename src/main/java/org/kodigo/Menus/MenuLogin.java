@@ -2,6 +2,7 @@ package org.kodigo.Menus;
 
 import org.kodigo.Interfaces.ILoginInterface;
 import org.kodigo.Interfaces.IMenu;
+import org.kodigo.Utils.ScreenCleaner;
 
 import java.awt.*;
 
@@ -35,6 +36,7 @@ public class MenuLogin implements IMenu{
     public void lanzarMenu() {
         mostrarBienvenida();
         mostrarLogin();
+        ScreenCleaner.cleanScreen();
         siguienteMenu.lanzarMenu();
     }
 }
