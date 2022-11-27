@@ -2,6 +2,7 @@ package org.kodigo.Menus;
 
 import org.kodigo.Class.Casa;
 import org.kodigo.Interfaces.IMenu;
+import org.kodigo.Utils.CierreGlobal;
 import org.kodigo.Utils.ConsoleScanner;
 import org.kodigo.Utils.ScreenCleaner;
 
@@ -67,13 +68,13 @@ public class MenuPrincipal implements IMenu {
                 lanzarMenuReportes();
                 break;
             case "salir":
-                cerrarAplicacion();
+                CierreGlobal.cerrarAplicacion();
                 break;
             case "Salir":
-                cerrarAplicacion();;
+                CierreGlobal.cerrarAplicacion();
                 break;
             case "SALIR":
-                cerrarAplicacion();
+                CierreGlobal.cerrarAplicacion();
             default:
                 System.out.println("La Opcion no se Encuentra en el Menu");
         }
@@ -94,17 +95,12 @@ public class MenuPrincipal implements IMenu {
 
     private void lanzarMenuReportes(){
         ScreenCleaner.cleanScreen();
-        System.out.println("Opcion -Reportes");
+        System.out.println("Opcion -Reportes de Todas Las Casas");
     }
 
     private void lanzarMenuCasas(int index){
         ScreenCleaner.cleanScreen();
         System.out.println("Se eligio la Casa: "+ index);
-    }
 
-    private void cerrarAplicacion(){
-        ConsoleScanner.closeScanner();
-        ScreenCleaner.cleanScreen();
-        System.exit(0);
-    };
+    }
 }
