@@ -30,9 +30,9 @@ public class AccessControl implements ILoginInterface {
         usuario = ConsoleScanner.getSingleString();
         System.out.println("Ingrese la Contraseña:");
         contraseña = ConsoleScanner.getSingleString();
-        return verifyLoggin(new User(usuario,contraseña));
+        return verifyLogin(new User(usuario,contraseña));
     }
-    private boolean verifyLoggin(User user){
+    private boolean verifyLogin(User user){
         return this.loggedUser.equals(user);
     }
 
