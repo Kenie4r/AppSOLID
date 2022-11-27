@@ -3,6 +3,7 @@ package org.kodigo.Class;
 import lombok.Getter;
 import lombok.Setter;
 import org.kodigo.Utils.ConsoleScanner;
+import org.kodigo.Utils.ScreenCleaner;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,6 +45,7 @@ public class Casa {
 
 
     public Casa(){
+        ScreenCleaner.cleanScreen();
         System.out.println("***************************");
         System.out.println("Ingresando Datos para Casa:");
         System.out.println("***************************\n");

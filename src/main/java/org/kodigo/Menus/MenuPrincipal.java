@@ -24,9 +24,10 @@ public class MenuPrincipal implements IMenu {
         System.out.println("Lista de casas");
         int i = 0;
 
-        System.out.println("N° - Codigo Casa-propietario");
+        System.out.println("N° - Codigo - Propietario");
+
         for (Casa casa : listadoCasas){
-            System.out.println(i + " - " + casa.getCodigoCasa() + " - " + casa.getPropietario());
+            System.out.println(i + "  -   " + casa.getCodigoCasa() + "    - " + casa.getPropietario().getPersonName());
             i++;
         }
     }
@@ -56,14 +57,14 @@ public class MenuPrincipal implements IMenu {
     }
 
     private void tomarOpcion(){
-        boolean opcionesAbiertas = true;
         String opciones = ConsoleScanner.getSingleString();
         switch (opciones){
             case "a" :
                 addCasa(new Casa());
+                lanzarMenu();
                 break;
             case "r":
-                System.out.println("Opcion -R");
+                lanzarMenuReportes();
                 break;
             case "salir":
                 cerrarAplicacion();
@@ -80,8 +81,6 @@ public class MenuPrincipal implements IMenu {
         if(esNumero(opciones)){
             System.out.println("esNumero: "+esNumero(opciones));
             lanzarMenuCasas(parsearAIndex(opciones));
-        }else{
-            lanzarMenu();
         }
     }
 
@@ -91,6 +90,11 @@ public class MenuPrincipal implements IMenu {
     }
     private int parsearAIndex(String index){
         return Integer.parseInt(index);
+    }
+
+    private void lanzarMenuReportes(){
+        ScreenCleaner.cleanScreen();
+        System.out.println("Opcion -Reportes");
     }
 
     private void lanzarMenuCasas(int index){
