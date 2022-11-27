@@ -19,5 +19,4 @@ public class Person {
     @Setter
     private String mail;
 
-
 }

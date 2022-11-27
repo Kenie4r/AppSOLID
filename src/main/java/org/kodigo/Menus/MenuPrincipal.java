@@ -75,13 +75,18 @@ public class MenuPrincipal implements IMenu {
                 break;
             case "SALIR":
                 CierreGlobal.cerrarAplicacion();
-            default:
-                System.out.println("La Opcion no se Encuentra en el Menu");
+                break;
         }
 
-        if(esNumero(opciones)){
-            System.out.println("esNumero: "+esNumero(opciones));
-            lanzarMenuCasas(parsearAIndex(opciones));
+        validarCasaSeleccionada(opciones);
+    }
+
+    private void validarCasaSeleccionada(String opcion){
+        if(esNumero(opcion)){
+            int index = parsearAIndex(opcion);
+            if(esCasaValida(index)){
+                lanzarMenuCasas(index);
+            }
         }
     }
 
@@ -89,6 +94,11 @@ public class MenuPrincipal implements IMenu {
         String regex = "^[0-9]+$";
         return string.matches(regex);
     }
+
+    private boolean esCasaValida(int indexCasa){
+        return indexCasa <= listadoCasas.size();
+    }
+
     private int parsearAIndex(String index){
         return Integer.parseInt(index);
     }
@@ -100,7 +110,7 @@ public class MenuPrincipal implements IMenu {
 
     private void lanzarMenuCasas(int index){
         ScreenCleaner.cleanScreen();
-        System.out.println("Se eligio la Casa: "+ index);
-
+        MenuCasa menuCasa = new MenuCasa(this,listadoCasas.get(index));
+        menuCasa.lanzarMenu();
     }
 }
