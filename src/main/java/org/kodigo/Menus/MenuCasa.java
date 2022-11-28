@@ -5,6 +5,8 @@ import org.kodigo.Class.Person;
 import org.kodigo.Interfaces.IMenu;
 import org.kodigo.Utils.*;
 
+import java.awt.*;
+
 public class MenuCasa implements IMenu {
 
     private IMenu menuAnterior;
@@ -38,6 +40,7 @@ public class MenuCasa implements IMenu {
         System.out.println("**           a - Agregar Persona           **");
         System.out.println("**    No. Persona - Seleccionar Persona    **");
         System.out.println("**           r - Reportes por Casa         **");
+        System.out.println("**              s - Servicios              **");
         System.out.println("**             m - Menu Anterior           **");
         System.out.println("**       salir - Finalizar aplicacion      **");
         System.out.println("*********************************************\n");
@@ -52,6 +55,9 @@ public class MenuCasa implements IMenu {
                 break;
             case "r":
                 lanzarMenuReportesPorCasa();
+                break;
+            case "s":
+                lanzarMenuServicios();
                 break;
             case "m":
                 regresarAMenuAnterior();
@@ -103,6 +109,11 @@ public class MenuCasa implements IMenu {
 
     private void regresarAMenuAnterior(){
         this.menuAnterior.lanzarMenu();
+    }
+
+    private void lanzarMenuServicios(){
+        MenuServicios menuServicios = new MenuServicios(this,this.casaSeleccionada);
+        menuServicios.lanzarMenu();
     }
 
     private void lanzarMenuReportesPorCasa(){
