@@ -10,9 +10,12 @@ public class MenuFacturas implements IMenu {
 
     private Casa casaSeleccionada;
 
-    public MenuFacturas(IMenu menuAnterior,Casa casaSeleccionada) {
+    private int servicioEnUso;
+
+    public MenuFacturas(IMenu menuAnterior,Casa casaSeleccionada,int index) {
         this.menuAnterior = menuAnterior;
         this.casaSeleccionada = casaSeleccionada;
+        this.servicioEnUso = index;
     }
 
     @Override
@@ -24,22 +27,21 @@ public class MenuFacturas implements IMenu {
     private void imprimirOpciones(){
         ScreenCleaner.cleanScreen();
         System.out.println("\n*******************************************");
-        System.out.println("**            Menu Servicios             **");
+        System.out.println("**                Facturas               **");
         System.out.println("*******************************************");
-        System.out.println("                 Casa Co. "+casaSeleccionada.getCodigoCasa());
-        System.out.println("          Propietario:  "+casaSeleccionada.getPropietario().getPersonName());
-        System.out.println("          Departamento: "+casaSeleccionada.getDepartamento());
+        System.out.println("           Servicio: "+casaSeleccionada.getServicio(servicioEnUso).getNombre());
+        System.out.println("          Proveedor: "+casaSeleccionada.getServicio(servicioEnUso).getProveedor());
         System.out.println("*******************************************");
         System.out.println("**         Seleccione una opcion         **");
         System.out.println("*******************************************\n");
-        casaSeleccionada.listarServicios();
+        casaSeleccionada.getServicio(servicioEnUso).listarFacturas();
         System.out.println("\n*********************************************");
         System.out.println("**                * Opciones *             **");
         System.out.println("**                ************             **");
         System.out.println("**                                         **");
-        System.out.println("**          a - Agregar Servicio           **");
-        System.out.println("**   No. Servicio - Seleccionar Servicio   **");
-        System.out.println("**          r - Reportes por Servicio      **");
+        System.out.println("**          a - Agregar Factura            **");
+        System.out.println("**    No. Factura - Seleccionar Factura    **");
+        System.out.println("**          r - Reportes por Factura       **");
         System.out.println("**             m - Menu Anterior           **");
         System.out.println("**       salir - Finalizar aplicacion      **");
         System.out.println("*********************************************\n");
@@ -50,11 +52,11 @@ public class MenuFacturas implements IMenu {
         switch (opciones){
             case "a" :
                 ScreenCleaner.cleanScreen();
-                casaSeleccionada.addServicio();
+                casaSeleccionada.getServicio(servicioEnUso).añadirFactura();
                 lanzarMenu();
                 break;
             case "r":
-                lanzarMenuReportesPorServicio();
+                lanzarMenuReportesPorFactura();
                 break;
             case "m":
                 regresarAMenuAnterior();
@@ -69,49 +71,59 @@ public class MenuFacturas implements IMenu {
                 CierreGlobal.cerrarAplicacion();
                 break;
         }
-        validarServicioSeleccionado(opciones);
+        validarFacturaSeleccionada(opciones);
     }
 
-    private void validarServicioSeleccionado(String opcion) {
+    private void validarFacturaSeleccionada(String opcion) {
         if(Validar.esNumero(opcion)){
             int index = Parseador.parsearAIndex(opcion);
-            if(casaSeleccionada.sobrepasaIndexServicio(index)){
-                servicioSeleccionado(index);
+            if(casaSeleccionada.getServicio(servicioEnUso).sobrepasaIndexFactura(index)){
+                facturaElegida(index);
             }
         }
         lanzarMenu();
     }
 
-    private void servicioSeleccionado(int index) {
-        mostrarOpcionesServicio();
+    private void facturaElegida(int index) {
+        mostrarOpcionesFactura();
         String opciones = ConsoleScanner.getSingleString();
         switch (opciones){
-            case "s":
-
+            case "v":
+                verFactura(index);
+                break;
+            case "a":
+                lanzarMenuCargos();
                 break;
             case "e":
-                casaSeleccionada.eliminarServicio(index);
+                casaSeleccionada.getServicio(servicioEnUso).eliminarFactura(index);
                 break;
         }
     }
 
-    private void lanzarMenuReportesPorServicio() {
-        System.out.println("R - Reportes por Servicio");
+    private void lanzarMenuReportesPorFactura() {
+        System.out.println("R - Reportes por Factura");
     }
 
-    private void lanzarMenuFacturas(){
+    private void lanzarMenuCargos(){
         ScreenCleaner.cleanScreen();
-        MenuFacturas menuFacturas  = new MenuFacturas(this,this.casaSeleccionada);
+        MenuCargos menuFacturas  = new MenuCargos(this,this.casaSeleccionada);
         menuFacturas.lanzarMenu();
     }
 
-    private void mostrarOpcionesServicio(){
-        System.out.println("\n**********************");
-        System.out.println("***** Opciones  ******");
-        System.out.println("**********************");
-        System.out.println("**  s - Seleccionar **");
-        System.out.println("**  e - Eliminar    **");
+    private void mostrarOpcionesFactura(){
+        System.out.println("\n***********************");
+        System.out.println("****** Opciones  ******");
+        System.out.println("***********************");
+        System.out.println("**  v - Ver factura  **");
+        System.out.println("**  a - Añadir cargo **");
+        System.out.println("**  e - Eliminar     **");
         System.out.println("**********************\n");
+    }
+
+    private void verFactura(int index){
+        System.out.println(casaSeleccionada.getServicio(servicioEnUso).getFactura(index).toString());
+        System.out.println("\n <<Continuar>> \n");
+        ConsoleScanner.getString();
     }
 
     private void regresarAMenuAnterior(){

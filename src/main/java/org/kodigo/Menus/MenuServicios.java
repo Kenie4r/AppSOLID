@@ -1,11 +1,8 @@
 package org.kodigo.Menus;
 
 import org.kodigo.Class.Casa;
-import org.kodigo.Class.Servicio;
 import org.kodigo.Interfaces.IMenu;
 import org.kodigo.Utils.*;
-
-import java.awt.*;
 
 public class MenuServicios implements IMenu {
 
@@ -27,7 +24,7 @@ public class MenuServicios implements IMenu {
     private void imprimirOpciones(){
         ScreenCleaner.cleanScreen();
         System.out.println("\n*******************************************");
-        System.out.println("**            Menu Servicios             **");
+        System.out.println("**               Servicios               **");
         System.out.println("*******************************************");
         System.out.println("                 Casa Co. "+casaSeleccionada.getCodigoCasa());
         System.out.println("          Propietario:  "+casaSeleccionada.getPropietario().getPersonName());
@@ -90,7 +87,7 @@ public class MenuServicios implements IMenu {
         String opciones = ConsoleScanner.getSingleString();
         switch (opciones){
             case "s":
-
+                lanzarMenuFacturas(index);
                 break;
             case "e":
                 casaSeleccionada.eliminarServicio(index);
@@ -102,9 +99,9 @@ public class MenuServicios implements IMenu {
         System.out.println("R - Reportes por Servicio");
     }
 
-    private void lanzarMenuFacturas(){
+    private void lanzarMenuFacturas(int index){
         ScreenCleaner.cleanScreen();
-        MenuFacturas menuFacturas  = new MenuFacturas(this,this.casaSeleccionada);
+        MenuFacturas menuFacturas  = new MenuFacturas(this,this.casaSeleccionada,index);
         menuFacturas.lanzarMenu();
     }
 

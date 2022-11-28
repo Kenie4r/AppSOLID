@@ -68,6 +68,29 @@ public class Servicio {
         return Math.abs(System.currentTimeMillis()-this.fechaSuscripcion.getTime());
     }
 
+    public void añadirFactura(){
+        this.listadoFacturas.add(new Invoice(this));
+    }
 
+    public Invoice getFactura(int index){
+        return listadoFacturas.get(index);
+    }
 
+    public void listarFacturas() {
+        int index = 0;
+        System.out.println("Facturas Registradas");
+        System.out.println("No. -  Fecha Creada                - Total");
+        for (Invoice invoice : listadoFacturas) {
+            System.out.println(index + "   -  "+invoice.getDataOfCreate()+"  -   "+invoice.getTotal());
+            index++;
+        }
+    }
+
+    public void eliminarFactura(int index){
+        this.listadoFacturas.remove(index);
+    }
+
+    public boolean sobrepasaIndexFactura(int indexFactura){
+        return indexFactura < listadoFacturas.size() && listadoFacturas.size() >0;
+    }
 }

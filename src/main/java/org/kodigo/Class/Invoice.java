@@ -31,6 +31,7 @@ public  class Invoice implements InvoiceInterface {
 
     //With this constructor we can create a new invoice of a service
     public Invoice(Servicio service) {
+        this.dataOfCreate = new Date(System.currentTimeMillis());
         //Initialized the arrayList of the charges, in order to no get a null list
         this.charges = new ArrayList<>();
         //get the service that we created when we call this function

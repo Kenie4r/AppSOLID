@@ -88,8 +88,8 @@ public class Casa {
     }
 
     public void listarPersonas(){
+        System.out.println("Lista de Personas en casa (No." + codigoCasa + ") :");
         if(listadoPersonas.size() > 0){
-            System.out.println("Lista de Personas en casa " + codigoCasa + " :");
             int index = 0;
             System.out.println("No. -  Nombre");
             for (Person persona:listadoPersonas) {
@@ -112,11 +112,15 @@ public class Casa {
     public void listarServicios(){
         System.out.println("Servicios en la Casa:");
         int index = 0;
-        System.out.println("No. -  Servicio      - Proveedor");
+        System.out.println("No. -  Servicio - Proveedor");
         for (Servicio servicio : listadoServicios) {
-            System.out.println(index + "   -   "+servicio.getNombre()+"        -   "+servicio.getProveedor());
+            System.out.println(index + "   -  "+servicio.getNombre()+"    -   "+servicio.getProveedor());
             index++;
         }
+    }
+
+    public Servicio getServicio(int index){
+        return listadoServicios.get(index);
     }
 
     public void actualizarCostoMantenimiento(Double nuevoCosto){
