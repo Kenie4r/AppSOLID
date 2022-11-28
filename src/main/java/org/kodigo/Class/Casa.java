@@ -41,7 +41,7 @@ public class Casa {
     private List<Servicio> listadoServicios;
     @Getter
     private Double costoMantenimiento;
-    private List<Invoice> listadoFacturas;
+
 
 
     public Casa(){
@@ -63,7 +63,6 @@ public class Casa {
         propietario = new Person("admin", ConsoleScanner.getString(),"admin@admin.com");
         listadoPersonas = new ArrayList<>();
         listadoServicios = new ArrayList<>();
-        listadoFacturas = new ArrayList<>();
     }
 
     public Casa(int codigoCasa, String departamento, String municipio, Integer numeroCasa, Person propietario, Double costoMantenimiento) {
@@ -75,7 +74,6 @@ public class Casa {
         this.costoMantenimiento = costoMantenimiento;
         this.listadoPersonas = new ArrayList<>();
         this.listadoServicios = new ArrayList<>();
-        this.listadoFacturas = new ArrayList<>();
     }
 
     public boolean addPersona(){

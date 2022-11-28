@@ -3,7 +3,10 @@ package org.kodigo.Class;
 import lombok.Getter;
 import lombok.Setter;
 import org.kodigo.Utils.ConsoleScanner;
+
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class Servicio {
@@ -20,6 +23,8 @@ public class Servicio {
     @Getter
     private Date fechaSuscripcion;
 
+    private List<Invoice> listadoFacturas;
+
     public Servicio(){
         System.out.println("******************************");
         System.out.println("Ingresando Datos para Servicio:");
@@ -29,6 +34,7 @@ public class Servicio {
         System.out.println("Ingrese quien es el proveedor del servicio:");
         this.proveedor = ConsoleScanner.getString();
         this.fechaSuscripcion = new Date(System.currentTimeMillis()) ;
+        listadoFacturas = new ArrayList<>();
     }
 
     public Servicio(String nombre, String proveedor, Double tarifa, Date fechaSuscripcion) {
@@ -36,7 +42,7 @@ public class Servicio {
         this.proveedor = proveedor;
         this.tarifa = tarifa;
         this.fechaSuscripcion = fechaSuscripcion;
-        System.out.println(this.fechaSuscripcion);
+        this.listadoFacturas = new ArrayList<>();
     }
 
     public int diasDeServicioActivo(){
