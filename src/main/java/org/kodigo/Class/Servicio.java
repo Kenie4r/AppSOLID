@@ -79,7 +79,7 @@ public class Servicio {
     public void listarFacturas() {
         int index = 0;
         System.out.println("Facturas Registradas");
-        System.out.println("No. -  Fecha Creada                - Total");
+        System.out.println("No. -  Fecha Creada                  - Total");
         for (Invoice invoice : listadoFacturas) {
             System.out.println(index + "   -  "+invoice.getDataOfCreate()+"  -   "+invoice.getTotal());
             index++;

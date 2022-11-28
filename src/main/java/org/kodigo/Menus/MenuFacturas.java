@@ -117,7 +117,7 @@ public class MenuFacturas implements IMenu {
         System.out.println("**  v - Ver factura  **");
         System.out.println("**  c - Ver cargos   **");
         System.out.println("**  e - Eliminar     **");
-        System.out.println("**********************\n");
+        System.out.println("*********0*************\n");
     }
 
     private void verFactura(int index){

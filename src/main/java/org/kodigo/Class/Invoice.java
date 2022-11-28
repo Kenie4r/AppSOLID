@@ -104,7 +104,7 @@ public  class Invoice implements InvoiceInterface {
     public void listarCargos(){
         int index = 0;
         System.out.println("Cargos Registradas");
-        System.out.println("No. -  Nombre                - Total");
+        System.out.println("No. -  Nombre           - Total");
         for (Charge charge : charges) {
             System.out.println(index + "   -  "+charge.getName()+"  -   "+charge.getPrice());
             index++;
