@@ -3,7 +3,6 @@ package org.kodigo.Class;
 import lombok.Getter;
 import lombok.Setter;
 import org.kodigo.Utils.ConsoleScanner;
-import org.kodigo.Utils.PauseScreen;
 import org.kodigo.Utils.ScreenCleaner;
 
 import java.util.ArrayList;
@@ -102,7 +101,11 @@ public class Casa {
         }
     }
 
-    public boolean addServicios(Servicio servicio){
+    public void addServicio(){
+        listadoServicios.add(new Servicio());
+    }
+
+    public boolean addServicio(Servicio servicio){
         System.out.println("Suscrito a: "+servicio.getNombre());
         listadoServicios.add(servicio);
         return true;
