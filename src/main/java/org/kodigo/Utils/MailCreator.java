@@ -1,7 +1,15 @@
 package org.kodigo.Utils;
 
+import org.kodigo.Class.Casa;
 import org.kodigo.Class.Invoice;
+import org.kodigo.Class.Mail;
+import org.kodigo.Class.Person;
 import org.kodigo.Interfaces.MailCreatorInterface;
+
+import javax.mail.*;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+import java.util.Properties;
 
 
 public class MailCreator implements MailCreatorInterface {
@@ -11,7 +19,7 @@ public class MailCreator implements MailCreatorInterface {
 
 
     @Override
-    public boolean makeBodyForMail(Invoice invoice) {
+    public boolean makeBodyForMail(Invoice invoice, Casa casa) {
 
 
 //    Just create the String data to the body
@@ -24,12 +32,16 @@ public class MailCreator implements MailCreatorInterface {
             "</body>" +
             "</html>";
 //      Call the mail request function in order to send the email
-        return makeRequestForMail(htmlBODY);
+        return makeRequestForMail(htmlBODY, casa);
 }
 
     @Override
-    public boolean makeRequestForMail(String body) {
-        //Llamar el objeto de mail para poder enviar el dato
+    public boolean makeRequestForMail(String body,  Casa c) {
+        Mail mail = new Mail(c);
+        mail.sendemail(body);
         return false;
     }
 }
+
+
+

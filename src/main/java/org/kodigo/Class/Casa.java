@@ -61,7 +61,8 @@ public class Casa {
         System.out.println("Ingrese el numero de la Casa:");
         this.numeroCasa = ConsoleScanner.getInteger();
         System.out.println("Por favor Ingrese el Propietario de la Casa:");
-        propietario = new Person("admin", ConsoleScanner.getString(),"admin@admin.com");
+        //Colocar un mail personal para hacer la prueba de que se envie el correo segun fue ingresado por consola
+        propietario = new Person("admin", ConsoleScanner.getString(),"eespino.mendoza@gmail.com");
         listadoPersonas = new ArrayList<>();
         listadoServicios = new ArrayList<>();
         listadoFacturas = new ArrayList<>();
