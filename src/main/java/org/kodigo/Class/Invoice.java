@@ -31,6 +31,7 @@ public  class Invoice implements InvoiceInterface {
 
     //With this constructor we can create a new invoice of a service
     public Invoice(Servicio service) {
+        this.dataOfCreate = new Date(System.currentTimeMillis());
         //Initialized the arrayList of the charges, in order to no get a null list
         this.charges = new ArrayList<>();
         //get the service that we created when we call this function
@@ -40,7 +41,8 @@ public  class Invoice implements InvoiceInterface {
         System.out.println("|        NUEVA FACTURA DE SERVICIO         |");
         System.out.println("+------------------------------------------+");
         //print the name of the services to show more information to the client
-        System.out.println("El servicio es :  " + this.service.getNombre());
+
+        System.out.println("El servicio es :  " + this.service.getNombre() + "  proporcionado por " + this.service.getProveedor());
         //get the count of charges that the invoice will have
         System.out.println("# de cargos de la factura " );
         //get the number with the ConsoleScanner class
@@ -98,5 +100,23 @@ public  class Invoice implements InvoiceInterface {
         text+="+------------------------------------------+";
 
        return text;
+    }
+
+    public void listarCargos(){
+        int index = 0;
+        System.out.println("Cargos Registradas");
+        System.out.println("No. -  Nombre           - Total");
+        for (Charge charge : charges) {
+            System.out.println(index + "   -  "+charge.getName()+"  -   "+charge.getPrice());
+            index++;
+        }
+    }
+
+    public void eliminarCargo(int index) {
+        charges.remove(index);
+    }
+
+    public boolean sobrepasaIndexServicio(int index) {
+        return index < charges.size() && charges.size() >0;
     }
 }

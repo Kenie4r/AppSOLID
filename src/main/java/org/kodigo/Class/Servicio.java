@@ -3,7 +3,10 @@ package org.kodigo.Class;
 import lombok.Getter;
 import lombok.Setter;
 import org.kodigo.Utils.ConsoleScanner;
+
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class Servicio {
@@ -20,13 +23,18 @@ public class Servicio {
     @Getter
     private Date fechaSuscripcion;
 
+    private List<Invoice> listadoFacturas;
+
     public Servicio(){
-        System.out.println("\nRecibiendo informacion de servicio:");
+        System.out.println("******************************");
+        System.out.println("Ingresando Datos para Servicio:");
+        System.out.println("******************************\n");
         System.out.println("Ingrese el nombre del Servicio:");
         this.nombre = ConsoleScanner.getString();
         System.out.println("Ingrese quien es el proveedor del servicio:");
         this.proveedor = ConsoleScanner.getString();
         this.fechaSuscripcion = new Date(System.currentTimeMillis()) ;
+        listadoFacturas = new ArrayList<>();
     }
 
     public Servicio(String nombre, String proveedor, Double tarifa, Date fechaSuscripcion) {
@@ -34,7 +42,7 @@ public class Servicio {
         this.proveedor = proveedor;
         this.tarifa = tarifa;
         this.fechaSuscripcion = fechaSuscripcion;
-        System.out.println(this.fechaSuscripcion);
+        this.listadoFacturas = new ArrayList<>();
     }
 
     public int diasDeServicioActivo(){
@@ -60,6 +68,29 @@ public class Servicio {
         return Math.abs(System.currentTimeMillis()-this.fechaSuscripcion.getTime());
     }
 
+    public void añadirFactura(){
+        this.listadoFacturas.add(new Invoice(this));
+    }
 
+    public Invoice getFactura(int index){
+        return listadoFacturas.get(index);
+    }
 
+    public void listarFacturas() {
+        int index = 0;
+        System.out.println("Facturas Registradas");
+        System.out.println("No. -  Fecha Creada                  - Total");
+        for (Invoice invoice : listadoFacturas) {
+            System.out.println(index + "   -  "+invoice.getDataOfCreate()+"  -   "+invoice.getTotal());
+            index++;
+        }
+    }
+
+    public void eliminarFactura(int index){
+        this.listadoFacturas.remove(index);
+    }
+
+    public boolean sobrepasaIndexFactura(int indexFactura){
+        return indexFactura < listadoFacturas.size() && listadoFacturas.size() >0;
+    }
 }

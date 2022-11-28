@@ -3,7 +3,6 @@ package org.kodigo.Class;
 import lombok.Getter;
 import lombok.Setter;
 import org.kodigo.Utils.ConsoleScanner;
-import org.kodigo.Utils.PauseScreen;
 import org.kodigo.Utils.ScreenCleaner;
 
 import java.util.ArrayList;
@@ -42,7 +41,7 @@ public class Casa {
     private List<Servicio> listadoServicios;
     @Getter
     private Double costoMantenimiento;
-    private List<Invoice> listadoFacturas;
+
 
 
     public Casa(){
@@ -65,7 +64,6 @@ public class Casa {
         propietario = new Person("admin", ConsoleScanner.getString(),"knthnolasco@gmail.com");
         listadoPersonas = new ArrayList<>();
         listadoServicios = new ArrayList<>();
-        listadoFacturas = new ArrayList<>();
     }
 
     public Casa(int codigoCasa, String departamento, String municipio, Integer numeroCasa, Person propietario, Double costoMantenimiento) {
@@ -75,27 +73,38 @@ public class Casa {
         this.numeroCasa = numeroCasa;
         this.propietario = propietario;
         this.costoMantenimiento = costoMantenimiento;
+        this.listadoPersonas = new ArrayList<>();
+        this.listadoServicios = new ArrayList<>();
+    }
+
+    public boolean addPersona(){
+        ScreenCleaner.cleanScreen();
+        listadoPersonas.add(new Person());
+        return true;
     }
 
     public boolean addPersona(Person persona){
-        System.out.println(persona.getPersonName()+" Es parte de la casa.\n");
-        System.out.println("ListadoPersonas size: "+ listadoPersonas.size());
-        PauseScreen.pause(1);
         listadoPersonas.add(persona);
         return true;
     }
 
     public void listarPersonas(){
-        System.out.println("Lista de Personas en casa " + codigoCasa + " :");
-        int index = 0;
-        System.out.println("No. -  Persona");
-        for (Person persona:listadoPersonas) {
-            System.out.println(index+ "   -   "+persona.getPersonName());
-            index++;
+        System.out.println("Lista de Personas en casa (No." + codigoCasa + ") :");
+        if(listadoPersonas.size() > 0){
+            int index = 0;
+            System.out.println("No. -  Nombre");
+            for (Person persona:listadoPersonas) {
+                System.out.println(index+ "   -  "+persona.getPersonName());
+                index++;
+            }
         }
     }
 
-    public boolean addServicios(Servicio servicio){
+    public void addServicio(){
+        listadoServicios.add(new Servicio());
+    }
+
+    public boolean addServicio(Servicio servicio){
         System.out.println("Suscrito a: "+servicio.getNombre());
         listadoServicios.add(servicio);
         return true;
@@ -104,19 +113,35 @@ public class Casa {
     public void listarServicios(){
         System.out.println("Servicios en la Casa:");
         int index = 0;
-        System.out.println("No. -  Servicio      - Proveedor");
+        System.out.println("No. -  Servicio - Proveedor");
         for (Servicio servicio : listadoServicios) {
-            System.out.println(index + "   -   "+servicio.getNombre()+"   -   "+servicio.getProveedor());
+            System.out.println(index + "   -  "+servicio.getNombre()+"    -   "+servicio.getProveedor());
             index++;
         }
+    }
+
+    public Servicio getServicio(int index){
+        return listadoServicios.get(index);
     }
 
     public void actualizarCostoMantenimiento(Double nuevoCosto){
         this.costoMantenimiento = nuevoCosto;
     }
 
+    public boolean sobrepasaIndexPersona(int indexCasa){
+        return indexCasa < listadoPersonas.size() && listadoPersonas.size() >0;
+    }
+
+    public boolean sobrepasaIndexServicio(int indexCasa){
+        return indexCasa < listadoServicios.size() && listadoServicios.size() >0;
+    }
+
     public void eliminarPersona(int index){
         this.listadoPersonas.remove(index);
+    }
+
+    public void cambiarPerson(int index){
+        this.listadoPersonas.set(index,new Person());
     }
 
     public void eliminarServicio(int index){

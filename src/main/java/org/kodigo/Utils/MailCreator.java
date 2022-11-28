@@ -1,6 +1,10 @@
 package org.kodigo.Utils;
 
-import org.kodigo.Class.*;
+
+import org.kodigo.Class.Casa;
+import org.kodigo.Class.Charge;
+import org.kodigo.Class.Invoice;
+import org.kodigo.Class.Person;
 import org.kodigo.Interfaces.MailCreatorInterface;
 
 import javax.mail.*;
@@ -17,6 +21,7 @@ public class MailCreator implements MailCreatorInterface {
 
     @Override
     public boolean makeBodyForMail(Invoice invoice, Casa casa) {
+
 
 
 //    Just create the String data to the body
