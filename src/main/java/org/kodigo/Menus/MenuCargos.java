@@ -1,17 +1,18 @@
 package org.kodigo.Menus;
 
-import org.kodigo.Class.Casa;
+import org.kodigo.Class.Charge;
+import org.kodigo.Class.Invoice;
 import org.kodigo.Interfaces.IMenu;
 import org.kodigo.Utils.*;
 
 public class MenuCargos implements IMenu{
     private IMenu menuAnterior;
 
-    private Casa casaSeleccionada;
+    private Invoice factura;
 
-    public MenuCargos(IMenu menuAnterior,Casa casaSeleccionada) {
+    public MenuCargos(IMenu menuAnterior,Invoice factura) {
         this.menuAnterior = menuAnterior;
-        this.casaSeleccionada = casaSeleccionada;
+        this.factura = factura;
     }
 
     @Override
@@ -23,22 +24,22 @@ public class MenuCargos implements IMenu{
     private void imprimirOpciones(){
         ScreenCleaner.cleanScreen();
         System.out.println("\n*******************************************");
-        System.out.println("**            Menu Servicios             **");
+        System.out.println("**            Cargos             **");
         System.out.println("*******************************************");
-        System.out.println("                 Casa Co. "+casaSeleccionada.getCodigoCasa());
-        System.out.println("          Propietario:  "+casaSeleccionada.getPropietario().getPersonName());
-        System.out.println("          Departamento: "+casaSeleccionada.getDepartamento());
+        System.out.println("            Servicio: "+factura.getService().getNombre());
+        System.out.println("        Fecha Creada: ");
+        System.out.println("    "+factura.getDataOfCreate());
         System.out.println("*******************************************");
         System.out.println("**         Seleccione una opcion         **");
         System.out.println("*******************************************\n");
-        casaSeleccionada.listarServicios();
+        factura.listarCargos();
         System.out.println("\n*********************************************");
         System.out.println("**                * Opciones *             **");
         System.out.println("**                ************             **");
         System.out.println("**                                         **");
-        System.out.println("**          a - Agregar Servicio           **");
-        System.out.println("**   No. Servicio - Seleccionar Servicio   **");
-        System.out.println("**          r - Reportes por Servicio      **");
+        System.out.println("**           a - Agregar Cargo             **");
+        System.out.println("**      No. Cargo - Seleccionar Cargo      **");
+        System.out.println("**         r - Reportes por Cargo          **");
         System.out.println("**             m - Menu Anterior           **");
         System.out.println("**       salir - Finalizar aplicacion      **");
         System.out.println("*********************************************\n");
@@ -49,11 +50,11 @@ public class MenuCargos implements IMenu{
         switch (opciones){
             case "a" :
                 ScreenCleaner.cleanScreen();
-                casaSeleccionada.addServicio();
+                factura.setNewChargeInInvoice(new Charge());
                 lanzarMenu();
                 break;
             case "r":
-                lanzarMenuReportesPorServicio();
+                lanzarMenuReportesPorCargo();
                 break;
             case "m":
                 regresarAMenuAnterior();
@@ -68,48 +69,40 @@ public class MenuCargos implements IMenu{
                 CierreGlobal.cerrarAplicacion();
                 break;
         }
-        validarServicioSeleccionado(opciones);
+        validarCargoSeleccionado(opciones);
     }
 
-    private void validarServicioSeleccionado(String opcion) {
+    private void validarCargoSeleccionado(String opcion) {
         if(Validar.esNumero(opcion)){
             int index = Parseador.parsearAIndex(opcion);
-            if(casaSeleccionada.sobrepasaIndexServicio(index)){
-                servicioSeleccionado(index);
+            if(factura.sobrepasaIndexServicio(index)){
+                cargoSeleccionado(index);
             }
         }
         lanzarMenu();
     }
 
-    private void servicioSeleccionado(int index) {
-        mostrarOpcionesServicio();
+    private void cargoSeleccionado(int index) {
+        mostrarOpcionesCargo();
         String opciones = ConsoleScanner.getSingleString();
         switch (opciones){
-            case "s":
-
-                break;
             case "e":
-                casaSeleccionada.eliminarServicio(index);
+                factura.eliminarCargo(index);
                 break;
         }
     }
 
-    private void lanzarMenuReportesPorServicio() {
+    private void lanzarMenuReportesPorCargo() {
         System.out.println("R - Reportes por Servicio");
     }
 
-    private void lanzarMenuFacturas(){
-        ScreenCleaner.cleanScreen();
-        MenuFacturas menuFacturas  = new MenuFacturas(this,this.casaSeleccionada,0);
-        menuFacturas.lanzarMenu();
-    }
 
-    private void mostrarOpcionesServicio(){
+    private void mostrarOpcionesCargo(){
         System.out.println("\n**********************");
         System.out.println("***** Opciones  ******");
         System.out.println("**********************");
-        System.out.println("**  s - Seleccionar **");
-        System.out.println("**  e - Eliminar    **");
+        System.out.println("**   e  - Eliminar  **");
+        System.out.println("** Otro - Cancelar  **");
         System.out.println("**********************\n");
     }
 

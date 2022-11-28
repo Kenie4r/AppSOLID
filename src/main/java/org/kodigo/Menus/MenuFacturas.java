@@ -91,8 +91,8 @@ public class MenuFacturas implements IMenu {
             case "v":
                 verFactura(index);
                 break;
-            case "a":
-                lanzarMenuCargos();
+            case "c":
+                lanzarMenuCargos(index);
                 break;
             case "e":
                 casaSeleccionada.getServicio(servicioEnUso).eliminarFactura(index);
@@ -104,9 +104,9 @@ public class MenuFacturas implements IMenu {
         System.out.println("R - Reportes por Factura");
     }
 
-    private void lanzarMenuCargos(){
+    private void lanzarMenuCargos(int index){
         ScreenCleaner.cleanScreen();
-        MenuCargos menuFacturas  = new MenuCargos(this,this.casaSeleccionada);
+        MenuCargos menuFacturas  = new MenuCargos(this,casaSeleccionada.getServicio(servicioEnUso).getFactura(index));
         menuFacturas.lanzarMenu();
     }
 
@@ -115,7 +115,7 @@ public class MenuFacturas implements IMenu {
         System.out.println("****** Opciones  ******");
         System.out.println("***********************");
         System.out.println("**  v - Ver factura  **");
-        System.out.println("**  a - Añadir cargo **");
+        System.out.println("**  c - Ver cargos   **");
         System.out.println("**  e - Eliminar     **");
         System.out.println("**********************\n");
     }

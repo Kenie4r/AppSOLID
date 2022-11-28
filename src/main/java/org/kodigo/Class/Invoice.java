@@ -100,4 +100,22 @@ public  class Invoice implements InvoiceInterface {
 
        return text;
     }
+
+    public void listarCargos(){
+        int index = 0;
+        System.out.println("Cargos Registradas");
+        System.out.println("No. -  Nombre                - Total");
+        for (Charge charge : charges) {
+            System.out.println(index + "   -  "+charge.getName()+"  -   "+charge.getPrice());
+            index++;
+        }
+    }
+
+    public void eliminarCargo(int index) {
+        charges.remove(index);
+    }
+
+    public boolean sobrepasaIndexServicio(int index) {
+        return index < charges.size() && charges.size() >0;
+    }
 }
