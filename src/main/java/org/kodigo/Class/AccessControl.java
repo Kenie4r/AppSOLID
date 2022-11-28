@@ -20,9 +20,10 @@ public class AccessControl implements ILoginInterface {
     @Override
     public boolean TryLogin() {
         Scanner scanner = new Scanner(System.in);
+        System.out.println("Ingrese el Usuario:");
         String username = scanner.nextLine();
+        System.out.println("Ingrese la Contraseña:");
         String password = scanner.nextLine();
-
         User userToLog = new User(username, password);
 
         if (verifyLogin(userToLog)){

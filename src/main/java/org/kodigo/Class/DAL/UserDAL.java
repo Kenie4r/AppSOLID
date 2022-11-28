@@ -4,9 +4,11 @@ import org.json.simple.JSONArray;
 import org.json.simple.parser.JSONParser;
 
 import org.json.simple.JSONObject;
+import org.json.simple.parser.ParseException;
 import org.kodigo.Class.User;
 import org.kodigo.Utils.PauseScreen;
 import java.io.FileReader;
+import java.io.IOException;
 import java.util.Objects;
 
 public class UserDAL {
@@ -17,7 +19,13 @@ public class UserDAL {
         try{
             return (JSONArray) parser.parse(new FileReader("./src/main/java/org/kodigo/Persistence/user.json"));
         }catch(Exception e){
-            return null;
+            try {
+                return (JSONArray) parser.parse(new FileReader("user.json"));
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            } catch (ParseException ex) {
+                throw new RuntimeException(ex);
+            }
         }
     }
 
@@ -26,8 +34,6 @@ public class UserDAL {
         for (Object entry : Objects.requireNonNull(getJsonArray())){
             JSONObject jo = (JSONObject) entry;
             if (jo.get("username").equals(toMatch)) {
-                System.out.println(jo.get("username").toString()+", "+jo.get("password").toString()+", "+jo.get("email").toString());
-                PauseScreen.pause(20);
                 return new User(jo.get("username").toString(),
                         jo.get("password").toString(),
                         jo.get("email").toString());
