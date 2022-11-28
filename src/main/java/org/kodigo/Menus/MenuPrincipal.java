@@ -1,10 +1,9 @@
 package org.kodigo.Menus;
 
 import org.kodigo.Class.Casa;
+import org.kodigo.Class.Person;
 import org.kodigo.Interfaces.IMenu;
-import org.kodigo.Utils.CierreGlobal;
-import org.kodigo.Utils.ConsoleScanner;
-import org.kodigo.Utils.ScreenCleaner;
+import org.kodigo.Utils.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +14,7 @@ public class MenuPrincipal implements IMenu {
 
     MenuPrincipal(){
         listadoCasas = new ArrayList<>();
+        eliminarLuego();
     }
     private  boolean addCasa(Casa casa){
         listadoCasas.add(casa);
@@ -82,9 +82,9 @@ public class MenuPrincipal implements IMenu {
     }
 
     private void validarCasaSeleccionada(String opcion){
-        if(esNumero(opcion)){
-            int index = parsearAIndex(opcion);
-            if(esCasaValida(index)){
+        if(Validar.esNumero(opcion)){
+            int index = Parseador.parsearAIndex(opcion);
+            if(sobrepasaIndexCasa(index)){
                 lanzarMenuCasas(index);
             }else{
                 lanzarMenu();
@@ -94,17 +94,8 @@ public class MenuPrincipal implements IMenu {
         }
     }
 
-    private boolean esNumero(String string){
-        String regex = "^[0-9]+$";
-        return string.matches(regex);
-    }
-
-    private boolean esCasaValida(int indexCasa){
+    private boolean sobrepasaIndexCasa(int indexCasa){
         return indexCasa < listadoCasas.size() && listadoCasas.size() >0;
-    }
-
-    private int parsearAIndex(String index){
-        return Integer.parseInt(index);
     }
 
     private void lanzarMenuReportes(){
@@ -113,8 +104,12 @@ public class MenuPrincipal implements IMenu {
     }
 
     private void lanzarMenuCasas(int index){
-        ScreenCleaner.cleanScreen();
         MenuCasa menuCasa = new MenuCasa(this,listadoCasas.get(index));
         menuCasa.lanzarMenu();
+    }
+
+    private void eliminarLuego(){
+        addCasa(new Casa(1,"San Salvador","Mejicanos",1,new Person("admin","Diego Molina","molina@diego.com"),0.00));
+        addCasa(new Casa(2,"San Salvador","Ayutuxtepeque",2,new Person("admin","Carlos Montes","montes@carlo.com"),0.00));
     }
 }
