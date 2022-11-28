@@ -68,7 +68,7 @@ public class Mail {
             message.setFrom(new InternetAddress(getUser()));
             message.setRecipients(Message.RecipientType.TO,
                     InternetAddress.parse(this.addressee));
-            message.setSubject("INVOICE");
+            message.setSubject("Recibo");
             message.setContent(body, "text/html");
             Transport.send(message);
 

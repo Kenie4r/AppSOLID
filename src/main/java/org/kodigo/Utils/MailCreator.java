@@ -1,9 +1,6 @@
 package org.kodigo.Utils;
 
-import org.kodigo.Class.Casa;
-import org.kodigo.Class.Invoice;
-import org.kodigo.Class.Mail;
-import org.kodigo.Class.Person;
+import org.kodigo.Class.*;
 import org.kodigo.Interfaces.MailCreatorInterface;
 
 import javax.mail.*;
@@ -28,8 +25,14 @@ public class MailCreator implements MailCreatorInterface {
                 "<h2>FACTURA DE SERVICIO</h2>" +
             "<p>Hola cliente, por este medio te compartimos las facturas de tu hogar," +
             " recuerda que puedes pagar estos servicios en las ventanillas del banco, etc. </p>" +
-            invoice.toString()+
-            "</body>" +
+                "<table> <caption>Factura de "+invoice.getService().getProveedor()+"</caption><thead><tr><th>Nombre de cargo </th> <th>Coste </th></tr></thead>";
+        for (Charge cargo :
+             invoice.getCharges()) {
+            htmlBODY+="<tr><td>"+cargo.getName()+"</td><td>"+cargo.getPrice()+"</td></tr>";
+        }
+        htmlBODY+="<tr><td>Total: </td><td>"+invoice.getTotal()+"</td></tr>";
+
+        htmlBODY+="</table>     </body>" +
             "</html>";
 //      Call the mail request function in order to send the email
         return makeRequestForMail(htmlBODY, casa);

@@ -9,8 +9,8 @@ import java.util.List;
 
 public class main {
     public static void main(String[] args) {
-            pruebaReporte();
-            pruebaMail();
+          pruebaMail();
+
     }
 
     private static void iniciarAplicacion(){
@@ -27,19 +27,14 @@ public class main {
     }
 
     private static  void pruebaReporte(){
-        Charge charge1 = new Charge();
-        Charge charge2 = new Charge();
-        List<Charge> listcharge = new ArrayList<>();
-        listcharge.add(charge1);
-        listcharge.add(charge2);
-        Reporte reporte = new Reporte("Agua",2, "120",listcharge);
+        Invoice invoice = new Invoice(new Servicio());
+        Reporte reporte = new Reporte(invoice.getService().getNombre(),2, String.valueOf(invoice.getTotal()), invoice.getCharges());
         reporte.GenerarReporte();
     }
 
     private static void pruebaMail(){
         MailCreator ma = new MailCreator();
-        Servicio se = new Servicio();
-        InvoiceElictricity ie = new InvoiceElictricity(se);
+        InvoiceElictricity ie = new InvoiceElictricity(new Servicio());
         Casa c = new Casa();
         ma.makeBodyForMail(ie,c);
     }

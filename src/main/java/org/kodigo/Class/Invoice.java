@@ -40,7 +40,7 @@ public  class Invoice implements InvoiceInterface {
         System.out.println("|        NUEVA FACTURA DE SERVICIO         |");
         System.out.println("+------------------------------------------+");
         //print the name of the services to show more information to the client
-        System.out.println("El servicio es :  " + this.service);
+        System.out.println("El servicio es :  " + this.service.getNombre());
         //get the count of charges that the invoice will have
         System.out.println("# de cargos de la factura " );
         //get the number with the ConsoleScanner class
