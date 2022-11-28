@@ -7,16 +7,16 @@ import org.kodigo.Utils.ConsoleScanner;
 
 /*Control de Accesso que Toma un usuario Predefinido por Valores guardados en RunTime*/
 
-public class AccessControl implements ILoginInterface {
+public class TemporalAccessControl implements ILoginInterface {
     @Getter
     @Setter
     private User loggedUser;
 
-    public AccessControl(){
+    public TemporalAccessControl(){
         this.loggedUser = new User("admin","admin");
     }
 
-    public AccessControl(User loggedUser) {
+    public TemporalAccessControl(User loggedUser) {
         this.loggedUser = loggedUser;
     }
 
