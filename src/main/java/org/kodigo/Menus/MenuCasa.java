@@ -23,6 +23,10 @@ public class MenuCasa implements IMenu {
         System.out.println("---------------------------");
         PauseScreen.pause(10);
         casaSeleccionada.setPropietario(new Person("test","Juancho Panzas","test@panz.as"));
+
+    }
+
+    private void regresarAMenuAnterior(){
         this.menuAnterior.lanzarMenu();
     }
 }
