@@ -1,14 +1,16 @@
 package org.kodigo;
 
-import org.kodigo.Class.AccessControl;
-import org.kodigo.Class.Invoice;
-import org.kodigo.Class.InvoiceElictricity;
-import org.kodigo.Class.Servicio;
+import org.kodigo.Class.*;
 import org.kodigo.Menus.MenuLogin;
+import org.kodigo.Utils.MailCreator;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class main {
     public static void main(String[] args) {
-        iniciarAplicacion();
+          pruebaMail();
+
     }
 
     private static void iniciarAplicacion(){
@@ -22,5 +24,18 @@ public class main {
 
     private static void llamarInvoice(Invoice invoice){
         System.out.println(invoice.toString());
+    }
+
+    private static  void pruebaReporte(){
+        Invoice invoice = new Invoice(new Servicio());
+        Reporte reporte = new Reporte(invoice.getService().getNombre(),2, String.valueOf(invoice.getTotal()), invoice.getCharges());
+        reporte.GenerarReporte();
+    }
+
+    private static void pruebaMail(){
+        MailCreator ma = new MailCreator();
+        InvoiceElictricity ie = new InvoiceElictricity(new Servicio());
+        Casa c = new Casa();
+        ma.makeBodyForMail(ie,c);
     }
 }
