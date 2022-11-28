@@ -85,6 +85,8 @@ public class MenuCasa implements IMenu {
         lanzarMenu();
     }
 
+
+
     private void personaSeleccionada(int index){
         mostrarOpcionesPersona();
         String opciones = ConsoleScanner.getSingleString();

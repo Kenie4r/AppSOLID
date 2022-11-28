@@ -116,7 +116,7 @@ public class Casa {
         int index = 0;
         System.out.println("No. -  Servicio      - Proveedor");
         for (Servicio servicio : listadoServicios) {
-            System.out.println(index + "   -   "+servicio.getNombre()+"   -   "+servicio.getProveedor());
+            System.out.println(index + "   -   "+servicio.getNombre()+"        -   "+servicio.getProveedor());
             index++;
         }
     }
@@ -127,6 +127,10 @@ public class Casa {
 
     public boolean sobrepasaIndexPersona(int indexCasa){
         return indexCasa < listadoPersonas.size() && listadoPersonas.size() >0;
+    }
+
+    public boolean sobrepasaIndexServicio(int indexCasa){
+        return indexCasa < listadoServicios.size() && listadoServicios.size() >0;
     }
 
     public void eliminarPersona(int index){

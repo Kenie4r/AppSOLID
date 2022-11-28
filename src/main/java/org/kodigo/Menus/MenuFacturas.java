@@ -1,19 +1,16 @@
 package org.kodigo.Menus;
 
 import org.kodigo.Class.Casa;
-import org.kodigo.Class.Servicio;
 import org.kodigo.Interfaces.IMenu;
 import org.kodigo.Utils.*;
 
-import java.awt.*;
-
-public class MenuServicios implements IMenu {
+public class MenuFacturas implements IMenu {
 
     private IMenu menuAnterior;
 
     private Casa casaSeleccionada;
 
-    public MenuServicios(IMenu menuAnterior,Casa casaSeleccionada) {
+    public MenuFacturas(IMenu menuAnterior,Casa casaSeleccionada) {
         this.menuAnterior = menuAnterior;
         this.casaSeleccionada = casaSeleccionada;
     }

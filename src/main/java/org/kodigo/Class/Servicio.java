@@ -21,7 +21,9 @@ public class Servicio {
     private Date fechaSuscripcion;
 
     public Servicio(){
-        System.out.println("\nRecibiendo informacion de servicio:");
+        System.out.println("******************************");
+        System.out.println("Ingresando Datos para Servicio:");
+        System.out.println("******************************\n");
         System.out.println("Ingrese el nombre del Servicio:");
         this.nombre = ConsoleScanner.getString();
         System.out.println("Ingrese quien es el proveedor del servicio:");
