@@ -3,10 +3,11 @@ package org.kodigo.Class;
 import lombok.Getter;
 import lombok.Setter;
 import org.kodigo.Class.DAL.UserDAL;
+import org.kodigo.Interfaces.ILoginInterface;
 
 import java.util.Scanner;
 
-public class AccessControl {
+public class AccessControl implements ILoginInterface {
     @Getter
     @Setter
     private static User loggedUser;
@@ -16,8 +17,8 @@ public class AccessControl {
         return userToLog != null && userToLog.getPassword().equals(user.getPassword());
     }
 
-
-    public static boolean login(){
+    @Override
+    public boolean TryLogin() {
         Scanner scanner = new Scanner(System.in);
         String username = scanner.nextLine();
         String password = scanner.nextLine();
@@ -29,6 +30,5 @@ public class AccessControl {
             return true;
         }
         return false;
-
     }
 }
