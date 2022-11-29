@@ -59,11 +59,11 @@ public class Casa {
         this.municipio = ConsoleScanner.getString();
         System.out.println("Ingrese el numero de la Casa:");
         this.numeroCasa = ConsoleScanner.getInteger();
-        System.out.println("Por favor Ingrese el Propietario de la Casa:");
+        System.out.println("Ingresando Datos  del Propietario de la Casa:");
         //Colocar un mail personal para hacer la prueba de que se envie el correo segun fue ingresado por consola
         System.out.println("Ingrese un Correo Electronico:");
         String emailPropietario = ConsoleScanner.getSingleString();
-        System.out.println("");
+        System.out.println("Ingrese el Nombrel del Propietario:");
         propietario = new Person("admin", ConsoleScanner.getString(),emailPropietario);
         listadoPersonas = new ArrayList<>();
         listadoServicios = new ArrayList<>();

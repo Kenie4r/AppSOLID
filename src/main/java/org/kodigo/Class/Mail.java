@@ -73,8 +73,8 @@ public class Mail {
             message.setSubject("Recibo");
             message.setContent(body, "text/html");
             Transport.send(message);
-
-
+            System.out.println("Correo Enviado Exitosamente");
+            ConsoleScanner.getString();
         } catch (MessagingException e) {
             System.out.println("Antivirus o Firewall Blockea Envio de Correos");
             ConsoleScanner.getString();

@@ -140,7 +140,6 @@ public class MenuFacturas implements IMenu {
 
     private void enviarFacturaPorCorreo(int index){
         MailCreator ma = new MailCreator();
-        Casa c = new Casa();
         ma.makeBodyForMail(casaSeleccionada.getServicio(servicioEnUso).getFactura(index),casaSeleccionada);
     }
 
