@@ -3,10 +3,11 @@ package org.kodigo.Class;
 import lombok.Getter;
 import lombok.Setter;
 import org.kodigo.Class.DAL.UserDAL;
+import org.kodigo.Interfaces.ILoginInterface;
 
 import java.util.Scanner;
 
-public class AccessControl {
+public class AccessControl implements ILoginInterface {
     @Getter
     @Setter
     private static User loggedUser;
@@ -20,8 +21,18 @@ public class AccessControl {
         }
     }
 
+    public static boolean register(User toRegister){
+        try{
+            UserDAL.addUser(toRegister);
+            return true;
+        }catch(Exception ex){
+            return false;
+        }
 
-    public static boolean login(){
+    }
+
+    @Override
+    public boolean TryLogin() {
         Scanner scanner = new Scanner(System.in);
         String username = scanner.nextLine();
         String password = scanner.nextLine();
@@ -37,17 +48,5 @@ public class AccessControl {
         }catch(Exception ex){
             return false;
         }
-
-    }
-
-
-    public static boolean register(User toRegister){
-        try{
-            UserDAL.addUser(toRegister);
-            return true;
-        }catch(Exception ex){
-            return false;
-        }
-
     }
 }
