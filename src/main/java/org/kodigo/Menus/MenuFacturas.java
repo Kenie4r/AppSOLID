@@ -2,6 +2,7 @@ package org.kodigo.Menus;
 
 import org.kodigo.Class.Casa;
 import org.kodigo.Class.InvoiceElictricity;
+import org.kodigo.Class.Reporte;
 import org.kodigo.Class.Servicio;
 import org.kodigo.Interfaces.IMenu;
 import org.kodigo.Utils.*;
@@ -94,6 +95,9 @@ public class MenuFacturas implements IMenu {
             case "v":
                 verFactura(index);
                 break;
+            case "g":
+                generarReporte(index);
+                break;
             case "c":
                 lanzarMenuCargos(index);
                 break;
@@ -117,14 +121,15 @@ public class MenuFacturas implements IMenu {
     }
 
     private void mostrarOpcionesFactura() {
-        System.out.println("\n************************");
-        System.out.println("****** Opciones  *******");
-        System.out.println("************************");
-        System.out.println("**  v - Ver factura   **");
-        System.out.println("**  c - Ver cargos    **");
-        System.out.println("**  m - Enviar Correo **");
-        System.out.println("**  e - Eliminar      **");
-        System.out.println("*********0**************\n");
+        System.out.println("\n**************************");
+        System.out.println("****** Opciones  **********");
+        System.out.println("***************************");
+        System.out.println("**  v - Ver factura      **");
+        System.out.println("**  c - Ver cargos       **");
+        System.out.println("**  g - Generar Reporte  **");
+        System.out.println("**  m - Enviar Correo    **");
+        System.out.println("**  e - Eliminar         **");
+        System.out.println("***************************\n");
     }
 
     private void verFactura(int index) {
@@ -137,6 +142,12 @@ public class MenuFacturas implements IMenu {
         MailCreator ma = new MailCreator();
         Casa c = new Casa();
         ma.makeBodyForMail(casaSeleccionada.getServicio(servicioEnUso).getFactura(index),casaSeleccionada);
+    }
+
+    private void generarReporte(int index){
+        Reporte reporte = new Reporte(casaSeleccionada.getServicio(servicioEnUso).getFactura(index));
+        reporte.GenerarReporte();
+        ConsoleScanner.getString();
     }
 
     private void regresarAMenuAnterior(){

@@ -37,13 +37,20 @@ public class Reporte implements IReporte {
         this.charges = charges;
     }
 
+    public Reporte(Invoice factura){
+        this.servicename = factura.getService().getNombre();
+        this.totalcargos = factura.getCharges().size()+1;
+        this.total = String.valueOf(factura.getTotal());
+        this.charges = factura.getCharges();
+    }
+
     @Override
     public void GenerarReporte() {
 
 
 
         try {
-            String path = "src/main/java/org/kodigo/resource/ReporteFactura.jasper";
+            String path = "ReporteFactura.jasper";
             JRBeanCollectionDataSource items = new JRBeanCollectionDataSource(this.getCharges());
 
             Map<String, Object> parameters = new HashMap<String,Object>();
