@@ -4,13 +4,10 @@ package org.kodigo.Utils;
 import org.kodigo.Class.Casa;
 import org.kodigo.Class.Charge;
 import org.kodigo.Class.Invoice;
-import org.kodigo.Class.Person;
+import org.kodigo.Class.Mail;
 import org.kodigo.Interfaces.MailCreatorInterface;
 
-import javax.mail.*;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
-import java.util.Properties;
+
 
 
 public class MailCreator implements MailCreatorInterface {
