@@ -3,6 +3,7 @@ package org.kodigo.Class;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.kodigo.Utils.ConsoleScanner;
 
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
@@ -30,11 +31,11 @@ public class Mail {
 
     public Mail(Casa c){
         this.auth=true;
-        this.host="smtp.titan.email";
+        this.host="smtp.gmail.com";
         this.port="587";
         this.enable=true;
-        this.user="TI@fhope.net";
-        this.pass = "Tifhope2022$$";
+        this.user="cuentakodigodummy@gmail.com";
+        this.pass = "bsauwaphgbftybwz";
         this.addressee=c.getPropietario().getMail();
     }
 
@@ -57,7 +58,7 @@ public class Mail {
         props.put("mail.smtp.starttls.enable", this.enable);
         props.put("mail.smtp.host", this.host);
         props.put("mail.smtp.port", this.port);
-        props.put("mail.smtp.ssl.trust", "smtp.gmail.com");
+        props.put("mail.smtp.ssl.trust", this.host);
         return props;
     }
 
@@ -75,7 +76,8 @@ public class Mail {
 
 
         } catch (MessagingException e) {
-            throw new RuntimeException(e);
+            System.out.println("Antivirus o Firewall Blockea Envio de Correos");
+            ConsoleScanner.getString();
         }
 
     }
