@@ -1,5 +1,3 @@
-[
-  {"username": "dan123", "password": "het1234", "email": "email@mail.com"}
-,{"username": "john12", "password": "heyo34", "email": "email1@mail.com"}
-
-]
+[{"password":"het1234","email":"email@mail.com","username":"dan123"},{"password":"heyo34","email":"email1@mail.com","username":"john12"},
+  {"password":"pass2","email":"email.com","username":"newUser3"},
+  {"password":"pass2","email":"email.com","username":"newUser2"}]

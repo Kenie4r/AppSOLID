@@ -35,6 +35,13 @@ public class User {
     }
 
     @Override
+    public String toString() {
+        return "{\"username\":\"" + this.username +
+                "\",\"password\": \"" + this.password +
+                "\",\"email\": \"" + this.email + "\"}";
+    }
+
+    @Override
     public int hashCode() {
         return Objects.hash(getUsername(), getPassword());
     }
