@@ -14,7 +14,6 @@ public class MenuPrincipal implements IMenu {
 
     MenuPrincipal(){
         listadoCasas = new ArrayList<>();
-        eliminarLuego();
     }
     private  boolean addCasa(Casa casa){
         listadoCasas.add(casa);
@@ -108,8 +107,4 @@ public class MenuPrincipal implements IMenu {
         menuCasa.lanzarMenu();
     }
 
-    private void eliminarLuego(){
-        addCasa(new Casa(1,"San Salvador","Mejicanos",1,new Person("admin","Diego Molina","molina@diego.com"),0.00));
-        addCasa(new Casa(2,"San Salvador","Ayutuxtepeque",2,new Person("admin","Carlos Montes","montes@carlo.com"),0.00));
-    }
 }
