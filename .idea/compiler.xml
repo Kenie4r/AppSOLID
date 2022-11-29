@@ -13,7 +13,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="AppSOLID" options="-Xlint:unchecked" />
+      <module name="AppSOLID" options="" />
     </option>
   </component>
 </project>
