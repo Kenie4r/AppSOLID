@@ -34,7 +34,9 @@ public class AccessControl implements ILoginInterface {
     @Override
     public boolean TryLogin() {
         Scanner scanner = new Scanner(System.in);
+        System.out.println("Por Favor Ingrese el Usuario: ");
         String username = scanner.nextLine();
+        System.out.println("Por favor Ingrese la Contraseña: ");
         String password = scanner.nextLine();
 
         User userToLog = new User(username, password);
