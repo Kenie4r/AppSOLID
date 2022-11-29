@@ -6,6 +6,6 @@ import org.kodigo.Class.Person;
 
 public interface MailCreatorInterface {
     public boolean makeBodyForMail(Invoice invoice, Casa casa);
-    public boolean makeRequestForMail(String body, Person person);
+    public boolean makeRequestForMail(String body,  Casa c);
 
 }
