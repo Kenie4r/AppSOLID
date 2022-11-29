@@ -11,9 +11,13 @@ public class AccessControl {
     @Setter
     private static User loggedUser;
 
-    private static boolean verifyLogin(User user){
-        User userToLog = UserDAL.getUser(user.getUsername());
-        return userToLog != null && userToLog.getPassword().equals(user.getPassword());
+    private static boolean verifyLogin(User user) throws Exception{
+        try{
+            User userToLog = UserDAL.getUser(user.getUsername());
+            return userToLog.equals(user);
+        }catch(Exception ex){
+            throw ex;
+        }
     }
 
 
@@ -24,11 +28,26 @@ public class AccessControl {
 
         User userToLog = new User(username, password);
 
-        if (verifyLogin(userToLog)){
-            loggedUser = userToLog;
-            return true;
+        try{
+            if (verifyLogin(userToLog)) {
+                loggedUser = userToLog;
+                return true;
+            }
+            return false;
+        }catch(Exception ex){
+            return false;
         }
-        return false;
+
+    }
+
+
+    public static boolean register(User toRegister){
+        try{
+            UserDAL.addUser(toRegister);
+            return true;
+        }catch(Exception ex){
+            return false;
+        }
 
     }
 }
