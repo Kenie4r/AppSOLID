@@ -3,33 +3,51 @@ package org.kodigo.Class;
 import lombok.Getter;
 import lombok.Setter;
 import org.kodigo.Class.DAL.UserDAL;
-import org.kodigo.Interfaces.ILoginInterface;
 
 import java.util.Scanner;
 
-public class AccessControl implements ILoginInterface {
+public class AccessControl {
     @Getter
     @Setter
     private static User loggedUser;
 
-    private static boolean verifyLogin(User user){
-        User userToLog = UserDAL.getUser(user.getUsername());
-        return userToLog != null && userToLog.getPassword().equals(user.getPassword());
+    private static boolean verifyLogin(User user) throws Exception{
+        try{
+            User userToLog = UserDAL.getUser(user.getUsername());
+            return userToLog.equals(user);
+        }catch(Exception ex){
+            throw ex;
+        }
     }
 
-    @Override
-    public boolean TryLogin() {
+
+    public static boolean login(){
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Ingrese el Usuario:");
         String username = scanner.nextLine();
-        System.out.println("Ingrese la Contraseña:");
         String password = scanner.nextLine();
+
         User userToLog = new User(username, password);
 
-        if (verifyLogin(userToLog)){
-            loggedUser = userToLog;
-            return true;
+        try{
+            if (verifyLogin(userToLog)) {
+                loggedUser = userToLog;
+                return true;
+            }
+            return false;
+        }catch(Exception ex){
+            return false;
         }
-        return false;
+
+    }
+
+
+    public static boolean register(User toRegister){
+        try{
+            UserDAL.addUser(toRegister);
+            return true;
+        }catch(Exception ex){
+            return false;
+        }
+
     }
 }
