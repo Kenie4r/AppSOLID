@@ -39,7 +39,7 @@ public class MenuCasa implements IMenu {
         System.out.println("**                                         **");
         System.out.println("**           a - Agregar Persona           **");
         System.out.println("**    No. Persona - Seleccionar Persona    **");
-        System.out.println("**           r - Reportes por Casa         **");
+        //System.out.println("**           r - Reportes por Casa         **");
         System.out.println("**              s - Servicios              **");
         System.out.println("**             m - Menu Anterior           **");
         System.out.println("**       salir - Finalizar aplicacion      **");

@@ -39,7 +39,7 @@ public class Reporte implements IReporte {
 
     public Reporte(Invoice factura){
         this.servicename = factura.getService().getNombre();
-        this.totalcargos = factura.getCharges().size()+1;
+        this.totalcargos = factura.getCharges().size();
         this.total = String.valueOf(factura.getTotal());
         this.charges = factura.getCharges();
     }

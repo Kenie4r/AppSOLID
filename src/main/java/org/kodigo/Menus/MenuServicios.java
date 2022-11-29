@@ -39,7 +39,7 @@ public class MenuServicios implements IMenu {
         System.out.println("**                                         **");
         System.out.println("**          a - Agregar Servicio           **");
         System.out.println("**   No. Servicio - Seleccionar Servicio   **");
-        System.out.println("**          r - Reportes por Servicio      **");
+        //System.out.println("**          r - Reportes por Servicio      **");
         System.out.println("**             m - Menu Anterior           **");
         System.out.println("**       salir - Finalizar aplicacion      **");
         System.out.println("*********************************************\n");

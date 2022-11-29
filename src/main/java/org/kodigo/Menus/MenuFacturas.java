@@ -44,7 +44,7 @@ public class MenuFacturas implements IMenu {
         System.out.println("**                                         **");
         System.out.println("**          a - Agregar Factura            **");
         System.out.println("**    No. Factura - Seleccionar Factura    **");
-        System.out.println("**          r - Reportes por Factura       **");
+        //System.out.println("**          r - Reportes por Factura       **");
         System.out.println("**      s - Enviar Facturas por Correo     **");
         System.out.println("**             m - Menu Anterior           **");
         System.out.println("**       salir - Finalizar aplicacion      **");

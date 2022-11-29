@@ -39,7 +39,7 @@ public class MenuCargos implements IMenu{
         System.out.println("**                                         **");
         System.out.println("**           a - Agregar Cargo             **");
         System.out.println("**      No. Cargo - Seleccionar Cargo      **");
-        System.out.println("**         r - Reportes por Cargo          **");
+       // System.out.println("**         r - Reportes por Cargo          **");
         System.out.println("**             m - Menu Anterior           **");
         System.out.println("**       salir - Finalizar aplicacion      **");
         System.out.println("*********************************************\n");

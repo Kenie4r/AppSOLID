@@ -51,7 +51,7 @@ public class MenuPrincipal implements IMenu {
         System.out.println("**                                   **");
         System.out.println("**          a - Agregar casa         **");
         System.out.println("**    No. Casa - Seleccionar casa    **");
-        System.out.println("**      r - Apartado de reportes     **");
+        //System.out.println("**      r - Apartado de reportes     **");
         System.out.println("**    salir - Finalizar aplicacion   **");
         System.out.println("***************************************\n");
     }
