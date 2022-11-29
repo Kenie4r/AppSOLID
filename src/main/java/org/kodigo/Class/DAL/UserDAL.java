@@ -3,20 +3,29 @@ package org.kodigo.Class.DAL;
 import org.json.simple.JSONArray;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.JSONObject;
+import org.json.simple.parser.ParseException;
 import org.kodigo.Class.User;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Objects;
 
 public class UserDAL {
 
     final static private String jsonPath = "./src/main/java/org/kodigo/Persistence/user.json";
+    final static private String jarJsonPath = "user.json";
     public static JSONArray getJsonArray(){
         JSONParser parser = new JSONParser();
         try {
             return (JSONArray) parser.parse(new FileReader(jsonPath));
         }catch(Exception ex){
-            return null;
+            try {
+                return (JSONArray) parser.parse(new FileReader(jarJsonPath));
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            } catch (ParseException e) {
+                throw new RuntimeException(e);
+            }
         }
     }
 
