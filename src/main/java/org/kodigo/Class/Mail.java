@@ -57,6 +57,7 @@ public class Mail {
         props.put("mail.smtp.starttls.enable", this.enable);
         props.put("mail.smtp.host", this.host);
         props.put("mail.smtp.port", this.port);
+        props.put("mail.smtp.ssl.trust", "smtp.gmail.com");
         return props;
     }
 
