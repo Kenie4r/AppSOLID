@@ -59,6 +59,22 @@
             <version>1.6.2</version>
         </dependency>
 
+        <!-- JUNIT - 5 -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>5.6.0</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>5.6.0</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- JUNIT - 5 -->
+
 
     </dependencies>
     <properties>
@@ -134,6 +150,15 @@
                     </archive>
                 </configuration>
             </plugin>
+
+            <!-- JUNIT - 5 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.22.2</version>
+            </plugin>
+            <!-- JUNIT - 5 -->
+
         </plugins>
     </build>
 
