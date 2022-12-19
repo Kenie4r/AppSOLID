@@ -75,6 +75,22 @@
         </dependency>
         <!-- JUNIT - 5 -->
 
+        <!-- Loggin Api, Apache Login For Maven-->
+
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+            <version>2.19.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>2.19.0</version>
+        </dependency>
+
+        <!-- Loggin Api, Apache Login For Maven-->
+
 
     </dependencies>
     <properties>
