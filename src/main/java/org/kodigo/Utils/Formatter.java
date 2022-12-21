@@ -51,7 +51,6 @@ public class Formatter implements interface_formatter {
         return formatHour;
     }
 
-    @Override
     public boolean mail(String formatMail) {
 
         // Patrón para validar el email
