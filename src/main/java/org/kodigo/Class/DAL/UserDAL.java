@@ -49,7 +49,7 @@ public class UserDAL {
     }
 
     public static boolean addUser(User userToAdd){
-        if(getUser(userToAdd.getUsername()) != null){
+        if(getUser(userToAdd.getUsername()) == null){
             return false;
         }
 

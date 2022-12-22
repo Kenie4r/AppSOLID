@@ -1,15 +1,11 @@
 package org.kodigo.Menus;
 
 import org.kodigo.Class.Casa;
-import org.kodigo.Class.Person;
 import org.kodigo.Interfaces.IMenu;
 import org.kodigo.Utils.*;
 
-import java.awt.*;
+public class MenuCasa extends MenuSubOpciones {
 
-public class MenuCasa implements IMenu {
-
-    private IMenu menuAnterior;
     private Casa casaSeleccionada;
 
     public MenuCasa(IMenu menuAnterior,Casa casaSeleccionada) {
@@ -18,12 +14,12 @@ public class MenuCasa implements IMenu {
     }
 
     @Override
-    public void lanzarMenu() {
+    public void lanzarEsteMenu() {
         imprimirOpciones();
         tomarOpcion();
     }
 
-    private void imprimirOpciones(){
+     void imprimirOpciones(){
         ScreenCleaner.cleanScreen();
         System.out.println("\n*****************************************");
         System.out.println("                 Casa Co. "+casaSeleccionada.getCodigoCasa());
@@ -46,18 +42,15 @@ public class MenuCasa implements IMenu {
         System.out.println("*********************************************\n");
     }
 
-    private void tomarOpcion() {
+     void tomarOpcion() {
         String opciones = ConsoleScanner.getSingleString();
         switch (opciones){
             case "a" :
                 casaSeleccionada.addPersona();
-                lanzarMenu();
-                break;
-            case "r":
-                lanzarMenuReportesPorCasa();
+                lanzarEsteMenu();
                 break;
             case "s":
-                lanzarMenuServicios();
+                lanzarSiguienteMenu(new MenuServicios(this,this.casaSeleccionada));
                 break;
             case "m":
                 regresarAMenuAnterior();
@@ -72,23 +65,23 @@ public class MenuCasa implements IMenu {
                 CierreGlobal.cerrarAplicacion();
                 break;
         }
-        validarPersonaSeleccionada(opciones);
+        validarOpcion(opciones);
     }
 
-    private void validarPersonaSeleccionada(String opcion){
+    @Override
+    void validarOpcion(String opcion) {
         if(Validar.esNumero(opcion)){
             int index = Parseador.parsearAIndex(opcion);
             if(casaSeleccionada.sobrepasaIndexPersona(index)){
-                personaSeleccionada(index);
+                opcionSeleccionanda(index);
             }
         }
-        lanzarMenu();
+        lanzarEsteMenu();
     }
 
-
-
-    private void personaSeleccionada(int index){
-        mostrarOpcionesPersona();
+    @Override
+    void opcionSeleccionanda(int index) {
+        mostrarSubOpciones();
         String opciones = ConsoleScanner.getSingleString();
         switch (opciones){
             case "e":
@@ -100,26 +93,13 @@ public class MenuCasa implements IMenu {
         }
     }
 
-    private void mostrarOpcionesPersona(){
+    @Override
+    void mostrarSubOpciones() {
         System.out.println("\n*******************");
         System.out.println("**** Opciones ****");
         System.out.println("******************");
         System.out.println("** e - Eliminar **");
         System.out.println("** c - Cambiar  **");
         System.out.println("******************\n");
-    }
-
-    private void regresarAMenuAnterior(){
-        this.menuAnterior.lanzarMenu();
-    }
-
-    private void lanzarMenuServicios(){
-        MenuServicios menuServicios = new MenuServicios(this,this.casaSeleccionada);
-        menuServicios.lanzarMenu();
-    }
-
-    private void lanzarMenuReportesPorCasa(){
-        ScreenCleaner.cleanScreen();
-        System.out.println("Opcion -Reportes de Todas Por Casa Individual");
     }
 }

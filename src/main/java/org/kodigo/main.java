@@ -13,7 +13,7 @@ public class main {
 
     private static void iniciarAplicacion(){
         MenuLogin menuLogin = new MenuLogin(new AccessControl());
-        menuLogin.lanzarMenu();
+        menuLogin.lanzarEsteMenu();
     }
     private static void pruebasKenneth(){
         InvoiceElictricity elictricity = new InvoiceElictricity(new Servicio()) ;
