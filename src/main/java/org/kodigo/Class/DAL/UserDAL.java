@@ -5,6 +5,8 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
 import org.kodigo.Class.User;
+import org.kodigo.Utils.Logger;
+
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -21,9 +23,8 @@ public class UserDAL {
         }catch(Exception ex){
             try {
                 return (JSONArray) parser.parse(new FileReader(jarJsonPath));
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            } catch (ParseException e) {
+            } catch (IOException | ParseException e) {
+                Logger.logError(e.getMessage());
                 throw new RuntimeException(e);
             }
         }
@@ -42,6 +43,7 @@ public class UserDAL {
             }
             return null;
         }catch(Exception ex){
+            Logger.logError(ex.getMessage());
             return null;
         }
     }
@@ -60,6 +62,7 @@ public class UserDAL {
             writer.flush();
             return true;
         }catch(Exception ex){
+            Logger.logError(ex.getMessage());
             return false;
         }
     }
