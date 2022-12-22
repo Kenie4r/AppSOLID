@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 import org.kodigo.Class.DAL.UserDAL;
 import org.kodigo.Interfaces.ILoginInterface;
+import org.kodigo.Utils.Logger;
 
 import java.util.Scanner;
 
@@ -17,6 +18,7 @@ public class AccessControl implements ILoginInterface {
             User userToLog = UserDAL.getUser(user.getUsername());
             return userToLog.equals(user);
         }catch(Exception ex){
+            Logger.logError(ex.getMessage());
             throw ex;
         }
     }
@@ -26,6 +28,7 @@ public class AccessControl implements ILoginInterface {
             UserDAL.addUser(toRegister);
             return true;
         }catch(Exception ex){
+            Logger.logError(ex.getMessage());
             return false;
         }
 
@@ -48,6 +51,7 @@ public class AccessControl implements ILoginInterface {
             }
             return false;
         }catch(Exception ex){
+            Logger.logError(ex.getMessage());
             return false;
         }
     }
