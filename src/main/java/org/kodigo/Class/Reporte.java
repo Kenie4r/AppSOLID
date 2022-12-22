@@ -7,6 +7,7 @@ import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.view.JasperViewer;
 import org.kodigo.Interfaces.IReporte;
+import org.kodigo.Utils.Logger;
 
 import java.util.*;
 
@@ -65,6 +66,7 @@ public class Reporte implements IReporte {
             visualizador.setTitle("Reporte");
             visualizador.setVisible(true);
         } catch (JRException e) {
+            Logger.logError(e.getMessage());
             throw new RuntimeException(e);
         }
     }
