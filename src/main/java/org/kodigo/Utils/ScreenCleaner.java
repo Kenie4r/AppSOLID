@@ -7,8 +7,8 @@ public class ScreenCleaner {
         ProcessBuilder processBuilder = new ProcessBuilder("cmd","/c","cls");
         try {
             processBuilder.inheritIO().start().waitFor();
-        } catch (InterruptedException e) {
-        } catch (IOException e) {
+        } catch (InterruptedException | IOException e) {
+            Logger.logError(e.getMessage());
         }
     }
 }
