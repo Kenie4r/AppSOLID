@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.kodigo.Utils.ConsoleScanner;
+import org.kodigo.Utils.Logger;
 
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
@@ -62,9 +63,8 @@ public class Mail {
         return props;
     }
 
-    public void sendemail(String body) {
-
-
+    public boolean sendemail(String body) {
+        boolean exito = false;
         try {
             Message message = new MimeMessage(crearsesion());
             message.setFrom(new InternetAddress(getUser()));
@@ -75,10 +75,12 @@ public class Mail {
             Transport.send(message);
             System.out.println("Correo Enviado Exitosamente");
             ConsoleScanner.getString();
+            exito = true;
         } catch (MessagingException e) {
+            Logger.logError(e.getMessage());
             System.out.println("Antivirus o Firewall Blockea Envio de Correos");
             ConsoleScanner.getString();
         }
-
+        return exito;
     }
 }

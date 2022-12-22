@@ -43,8 +43,8 @@ public class MailCreator implements MailCreatorInterface {
     @Override
     public boolean makeRequestForMail(String body,  Casa c) {
         Mail mail = new Mail(c);
-        mail.sendemail(body);
-        return false;
+        boolean result = mail.sendemail(body);
+        return result;
     }
 }
 

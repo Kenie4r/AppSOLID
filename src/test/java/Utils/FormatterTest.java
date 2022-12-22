@@ -1,3 +1,5 @@
+package Utils;
+
 import org.junit.jupiter.api.Test;
 import org.kodigo.Utils.Formatter;
 
