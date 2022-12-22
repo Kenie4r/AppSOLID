@@ -25,8 +25,16 @@ public  class Invoice implements InvoiceInterface {
     @Setter
     @Getter
     private Servicio service;
-    @Setter
-    @Getter
+
+    public List<Charge> getCharges() {
+        return charges;
+    }
+
+    public void setCharges(List<Charge> charges) {
+        this.charges = charges;
+        updateTotal();
+    }
+
     private List<Charge> charges;
 
     //With this constructor we can create a new invoice of a service
@@ -52,6 +60,20 @@ public  class Invoice implements InvoiceInterface {
         }
 
     }
+    public Invoice(Servicio service, List<Charge> charges) {
+        this.dataOfCreate = new Date(System.currentTimeMillis());
+        //Initialized the arrayList of the charges, in order to no get a null list
+        this.charges = charges;
+        //get the service that we created when we call this function
+        this.service = service;
+        //Update the charges
+        updateTotal();
+
+    }
+
+
+
+
     //A function that will update the total of the invoice,
     protected void updateTotal(){
 
@@ -61,7 +83,7 @@ public  class Invoice implements InvoiceInterface {
             //then just add the price to the subtotal
             subtotal += charge.getPrice();//just get the price
         }
-        this.total = subtotal;//just update the total of the invoice
+        this.total =  Math.round(subtotal* 100.0) / 100.0;//just update the total of the invoice
     }
 
     //insert a new charge in the list, just send the charge to add it

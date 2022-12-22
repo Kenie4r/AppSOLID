@@ -51,7 +51,7 @@ public class Formatter implements interface_formatter {
         return formatHour;
     }
 
-    public boolean mail(String formatMail) {
+    public static boolean mail(String formatMail) {
 
         // Patrón para validar el email
         Pattern pattern = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"

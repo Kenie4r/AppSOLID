@@ -4,6 +4,8 @@ package org.kodigo.Class;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 
 public class InvoiceElictricity extends Invoice {
     //Create a little constant that it's the IMPUESTO
@@ -12,6 +14,9 @@ public class InvoiceElictricity extends Invoice {
         super(service);
     }
 
+    public  InvoiceElictricity(Servicio servicio , List<Charge> charges){
+        super(servicio, charges);
+    }
     //We have to change the function updateTotal, cuz we have to add the
     //IMPUESTO to the total
     @Override
@@ -26,7 +31,7 @@ public class InvoiceElictricity extends Invoice {
         //We multiply the IMPUESTO by the subtotal, the with that result
         //Just add it to the subttotal
         subtotal = subtotal + (IMPUESTO * subtotal);
-        this.setTotal( subtotal);
+        this.setTotal( Math.round(subtotal* 100.0) / 100.0);
 
     }
 

@@ -45,6 +45,7 @@ public class Servicio {
         this.listadoFacturas = new ArrayList<>();
     }
 
+
     public int diasDeServicioActivo(){
         return (int) TimeUnit.DAYS.convert(diferencialdeTiempo(),TimeUnit.MILLISECONDS);
     }
