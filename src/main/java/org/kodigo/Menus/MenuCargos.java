@@ -5,7 +5,9 @@ import org.kodigo.Class.Invoice;
 import org.kodigo.Interfaces.IMenu;
 import org.kodigo.Utils.*;
 
-public class MenuCargos extends MenuSubOpciones{
+public class MenuCargos implements IMenu{
+    private IMenu menuAnterior;
+
     private Invoice factura;
 
     public MenuCargos(IMenu menuAnterior,Invoice factura) {
@@ -14,12 +16,12 @@ public class MenuCargos extends MenuSubOpciones{
     }
 
     @Override
-    public void lanzarEsteMenu() {
+    public void lanzarMenu() {
         imprimirOpciones();
         tomarOpcion();
     }
 
-    public void imprimirOpciones(){
+    private void imprimirOpciones(){
         ScreenCleaner.cleanScreen();
         System.out.println("\n*******************************************");
         System.out.println("**            Cargos             **");
@@ -43,13 +45,16 @@ public class MenuCargos extends MenuSubOpciones{
         System.out.println("*********************************************\n");
     }
 
-    public void tomarOpcion() {
+    private void tomarOpcion() {
         String opciones = ConsoleScanner.getSingleString();
         switch (opciones){
             case "a" :
                 ScreenCleaner.cleanScreen();
                 factura.setNewChargeInInvoice(new Charge());
-                lanzarEsteMenu();
+                lanzarMenu();
+                break;
+            case "r":
+                lanzarMenuReportesPorCargo();
                 break;
             case "m":
                 regresarAMenuAnterior();
@@ -64,23 +69,21 @@ public class MenuCargos extends MenuSubOpciones{
                 CierreGlobal.cerrarAplicacion();
                 break;
         }
-        validarOpcion(opciones);
+        validarCargoSeleccionado(opciones);
     }
 
-    @Override
-    void validarOpcion(String opcion) {
+    private void validarCargoSeleccionado(String opcion) {
         if(Validar.esNumero(opcion)){
             int index = Parseador.parsearAIndex(opcion);
             if(factura.sobrepasaIndexServicio(index)){
-                opcionSeleccionanda(index);
+                cargoSeleccionado(index);
             }
         }
-        lanzarEsteMenu();
+        lanzarMenu();
     }
 
-    @Override
-    void opcionSeleccionanda(int index) {
-        mostrarSubOpciones();
+    private void cargoSeleccionado(int index) {
+        mostrarOpcionesCargo();
         String opciones = ConsoleScanner.getSingleString();
         switch (opciones){
             case "e":
@@ -89,15 +92,21 @@ public class MenuCargos extends MenuSubOpciones{
         }
     }
 
+    private void lanzarMenuReportesPorCargo() {
+        System.out.println("R - Reportes por Servicio");
+    }
 
 
-    @Override
-    void mostrarSubOpciones() {
+    private void mostrarOpcionesCargo(){
         System.out.println("\n**********************");
         System.out.println("***** Opciones  ******");
         System.out.println("**********************");
         System.out.println("**   e  - Eliminar  **");
         System.out.println("** Otro - Cancelar  **");
         System.out.println("**********************\n");
+    }
+
+    private void regresarAMenuAnterior(){
+        this.menuAnterior.lanzarMenu();
     }
 }

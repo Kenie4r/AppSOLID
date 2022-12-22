@@ -1,11 +1,16 @@
 package org.kodigo.Menus;
 
 import org.kodigo.Class.Casa;
+import org.kodigo.Class.InvoiceElictricity;
 import org.kodigo.Class.Reporte;
+import org.kodigo.Class.Servicio;
 import org.kodigo.Interfaces.IMenu;
 import org.kodigo.Utils.*;
 
-public class MenuFacturas extends MenuSubOpciones {
+public class MenuFacturas implements IMenu {
+
+    private IMenu menuAnterior;
+
     private Casa casaSeleccionada;
 
     private int servicioEnUso;
@@ -17,12 +22,12 @@ public class MenuFacturas extends MenuSubOpciones {
     }
 
     @Override
-    public void lanzarEsteMenu() {
+    public void lanzarMenu() {
         imprimirOpciones();
         tomarOpcion();
     }
 
-    public void imprimirOpciones() {
+    private void imprimirOpciones() {
         ScreenCleaner.cleanScreen();
         System.out.println("\n*******************************************");
         System.out.println("**                Facturas               **");
@@ -46,13 +51,16 @@ public class MenuFacturas extends MenuSubOpciones {
         System.out.println("*********************************************\n");
     }
 
-    public void tomarOpcion() {
+    private void tomarOpcion() {
         String opciones = ConsoleScanner.getSingleString();
         switch (opciones) {
             case "a":
                 ScreenCleaner.cleanScreen();
                 casaSeleccionada.getServicio(servicioEnUso).añadirFactura();
-                lanzarEsteMenu();
+                lanzarMenu();
+                break;
+            case "r":
+                lanzarMenuReportesPorFactura();
                 break;
             case "m":
                 regresarAMenuAnterior();
@@ -67,23 +75,21 @@ public class MenuFacturas extends MenuSubOpciones {
                 CierreGlobal.cerrarAplicacion();
                 break;
         }
-        validarOpcion(opciones);
+        validarFacturaSeleccionada(opciones);
     }
 
-    @Override
-    void validarOpcion(String opcion) {
+    private void validarFacturaSeleccionada(String opcion) {
         if (Validar.esNumero(opcion)) {
             int index = Parseador.parsearAIndex(opcion);
             if (casaSeleccionada.getServicio(servicioEnUso).sobrepasaIndexFactura(index)) {
-                opcionSeleccionanda(index);
+                facturaElegida(index);
             }
         }
-        lanzarEsteMenu();
+        lanzarMenu();
     }
 
-    @Override
-    void opcionSeleccionanda(int index) {
-        mostrarSubOpciones();
+    private void facturaElegida(int index) {
+        mostrarOpcionesFactura();
         String opciones = ConsoleScanner.getSingleString();
         switch (opciones) {
             case "v":
@@ -93,8 +99,7 @@ public class MenuFacturas extends MenuSubOpciones {
                 generarReporte(index);
                 break;
             case "c":
-                ScreenCleaner.cleanScreen();
-                lanzarSiguienteMenu(new MenuCargos(this, casaSeleccionada.getServicio(servicioEnUso).getFactura(index)));
+                lanzarMenuCargos(index);
                 break;
             case "m":
                 enviarFacturaPorCorreo(index);
@@ -105,8 +110,17 @@ public class MenuFacturas extends MenuSubOpciones {
         }
     }
 
-    @Override
-    void mostrarSubOpciones() {
+    private void lanzarMenuReportesPorFactura() {
+        System.out.println("R - Reportes por Factura");
+    }
+
+    private void lanzarMenuCargos(int index) {
+        ScreenCleaner.cleanScreen();
+        MenuCargos menuFacturas = new MenuCargos(this, casaSeleccionada.getServicio(servicioEnUso).getFactura(index));
+        menuFacturas.lanzarMenu();
+    }
+
+    private void mostrarOpcionesFactura() {
         System.out.println("\n**************************");
         System.out.println("****** Opciones  **********");
         System.out.println("***************************");
@@ -117,7 +131,6 @@ public class MenuFacturas extends MenuSubOpciones {
         System.out.println("**  e - Eliminar         **");
         System.out.println("***************************\n");
     }
-
 
     private void verFactura(int index) {
         System.out.println(casaSeleccionada.getServicio(servicioEnUso).getFactura(index).toString());
@@ -136,6 +149,7 @@ public class MenuFacturas extends MenuSubOpciones {
         ConsoleScanner.getString();
     }
 
-
-
+    private void regresarAMenuAnterior(){
+        this.menuAnterior.lanzarMenu();
+    }
 }
