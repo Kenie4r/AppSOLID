@@ -52,25 +52,26 @@ public class Formatter implements interface_formatter {
     }
 
     public static boolean mail(String formatMail) {
+        Pattern pattern = getPattern();
+        Matcher mather = pattern.matcher(formatMail);
+        return extracted(mather);
+    }
 
+    private static boolean extracted(Matcher mather) {
+        if (mather.find() == true) {
+
+            System.out.println("El email ingresado es válido.");
+            return true;
+        } else {
+            System.out.println("El email ingresado es inválido.\nIngrese de nuevo su correo");
+            return false;
+        }
+    }
+
+    private static Pattern getPattern() {
         // Patrón para validar el email
         Pattern pattern = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
                 + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
-
-
-        Matcher mather = pattern.matcher(formatMail);
-
-
-            if (mather.find() == true) {
-
-                System.out.println("El email ingresado es válido.");
-                return true;
-            } else {
-                System.out.println("El email ingresado es inválido.\nIngrese de nuevo su correo");
-                return false;
-            }
-
-
-
+        return pattern;
     }
 }
