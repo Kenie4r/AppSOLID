@@ -1,4 +1,4 @@
-package org.kodigo.Class;
+package Utils;
 
 import org.junit.jupiter.api.Test;
 import org.kodigo.Utils.ScreenCleaner;
