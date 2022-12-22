@@ -15,12 +15,4 @@ public class main {
         MenuLogin menuLogin = new MenuLogin(new AccessControl());
         menuLogin.lanzarEsteMenu();
     }
-    private static void pruebasKenneth(){
-        InvoiceElictricity elictricity = new InvoiceElictricity(new Servicio()) ;
-        llamarInvoice(elictricity);
-    }
-
-    private static void llamarInvoice(Invoice invoice){
-        System.out.println(invoice.toString());
-    }
 }
