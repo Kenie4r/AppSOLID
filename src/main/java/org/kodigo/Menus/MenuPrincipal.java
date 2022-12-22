@@ -1,45 +1,28 @@
 package org.kodigo.Menus;
 
 import org.kodigo.Class.Casa;
-import org.kodigo.Class.Person;
 import org.kodigo.Interfaces.IMenu;
 import org.kodigo.Utils.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MenuPrincipal implements IMenu {
+public class MenuPrincipal extends MenuOpciones {
 
     private  List<Casa> listadoCasas;
 
     MenuPrincipal(){
         listadoCasas = new ArrayList<>();
     }
-    private  boolean addCasa(Casa casa){
-        listadoCasas.add(casa);
-        return true;
-    }
-
-    private void listarCasas(){
-        System.out.println("Lista de casas");
-        int i = 0;
-
-        System.out.println("N° - Codigo - Propietario");
-
-        for (Casa casa : listadoCasas){
-            System.out.println(i + "  -   " + casa.getCodigoCasa() + "    - " + casa.getPropietario().getPersonName());
-            i++;
-        }
-    }
 
     @Override
-    public void lanzarMenu() {
+    public void lanzarEsteMenu() {
         ScreenCleaner.cleanScreen();
         imprimirOpciones();
         tomarOpcion();
     }
 
-    private void imprimirOpciones(){
+    public void imprimirOpciones(){
         System.out.println("\n***************************************");
         System.out.println("**      MenuPrincipal principal      **");
         System.out.println("**       Seleccione una opcion       **");
@@ -56,15 +39,12 @@ public class MenuPrincipal implements IMenu {
         System.out.println("***************************************\n");
     }
 
-    private void tomarOpcion(){
+    public void tomarOpcion(){
         String opciones = ConsoleScanner.getSingleString();
         switch (opciones){
             case "a" :
-                addCasa(new Casa());
-                lanzarMenu();
-                break;
-            case "r":
-                lanzarMenuReportes();
+                UtilsListas.añadirALista(new Casa(),listadoCasas);
+                lanzarEsteMenu();
                 break;
             case "salir":
                 CierreGlobal.cerrarAplicacion();
@@ -77,34 +57,39 @@ public class MenuPrincipal implements IMenu {
                 break;
         }
 
-        validarCasaSeleccionada(opciones);
+        validarOpcion(opciones);
     }
 
-    private void validarCasaSeleccionada(String opcion){
+    @Override
+    void validarOpcion(String opcion) {
         if(Validar.esNumero(opcion)){
             int index = Parseador.parsearAIndex(opcion);
-            if(sobrepasaIndexCasa(index)){
-                lanzarMenuCasas(index);
+            if(UtilsListas.sobrepasaIndex(index,listadoCasas)){
+                opcionSeleccionanda(index);
             }else{
-                lanzarMenu();
+                lanzarEsteMenu();
             }
         }else{
-            lanzarMenu();
+            lanzarEsteMenu();
         }
     }
 
-    private boolean sobrepasaIndexCasa(int indexCasa){
-        return indexCasa < listadoCasas.size() && listadoCasas.size() >0;
+    @Override
+    void opcionSeleccionanda(int index) {
+        lanzarSiguienteMenu(new MenuCasa(this,listadoCasas.get(index)));
     }
 
-    private void lanzarMenuReportes(){
-        ScreenCleaner.cleanScreen();
-        System.out.println("Opcion -Reportes de Todas Las Casas");
-    }
 
-    private void lanzarMenuCasas(int index){
-        MenuCasa menuCasa = new MenuCasa(this,listadoCasas.get(index));
-        menuCasa.lanzarMenu();
+    private void listarCasas(){
+        System.out.println("Lista de casas");
+        int i = 0;
+
+        System.out.println("N° - Codigo - Propietario");
+
+        for (Casa casa : listadoCasas){
+            System.out.println(i + "  -   " + casa.getCodigoCasa() + "    - " + casa.getPropietario().getPersonName());
+            i++;
+        }
     }
 
 }

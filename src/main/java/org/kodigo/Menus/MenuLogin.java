@@ -4,8 +4,6 @@ import org.kodigo.Interfaces.ILoginInterface;
 import org.kodigo.Interfaces.IMenu;
 import org.kodigo.Utils.ScreenCleaner;
 
-import java.awt.*;
-
 public class MenuLogin implements IMenu{
 
     ILoginInterface accessControl;
@@ -33,10 +31,10 @@ public class MenuLogin implements IMenu{
     }
 
     @Override
-    public void lanzarMenu() {
+    public void lanzarEsteMenu() {
         mostrarBienvenida();
         mostrarLogin();
         ScreenCleaner.cleanScreen();
-        siguienteMenu.lanzarMenu();
+        siguienteMenu.lanzarEsteMenu();
     }
 }
