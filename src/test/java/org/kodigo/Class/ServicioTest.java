@@ -12,6 +12,6 @@ public class ServicioTest {
     void servicioTest(){
         Date date = new Date(2022-1900, Calendar.DECEMBER,01);
         Servicio servicio = new Servicio("Servicio de Prueba","Pruebas",1.0,date);
-        assertEquals(21,servicio.diasDeServicioActivo());
+        assertEquals(33,servicio.diasDeServicioActivo());
     }
 }

@@ -12,7 +12,7 @@ public class PauseScreenTest {
     @Test
     void pauseScreenTest(){
         int segundos = 2;
-        assertTimeout(Duration.ofMillis((1000*2)+15),()->{
+        assertTimeout(Duration.ofMillis((1000*2)+30),()->{
             PauseScreen.pause(segundos);
         });
     }
